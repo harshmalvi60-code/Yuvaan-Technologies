@@ -8,12 +8,48 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+  if (!open) closeAllDropdowns();
 });
 
-// CLOSE MENU ON LINK CLICK
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+// MOBILE ACCORDION DROPDOWNS
+const MOBILE_BREAKPOINT = 900;
+const dropdowns = document.querySelectorAll('.has-dropdown');
+
+function closeAllDropdowns() {
+  dropdowns.forEach(d => d.classList.remove('open'));
+}
+
+dropdowns.forEach(item => {
+  const toggle = item.querySelector('.dropdown-toggle');
+  toggle.addEventListener('click', (e) => {
+    // Only intercept as an accordion on mobile; let it navigate on desktop
+    if (window.innerWidth <= MOBILE_BREAKPOINT) {
+      e.preventDefault();
+      const isOpen = item.classList.contains('open');
+      closeAllDropdowns();
+      if (!isOpen) item.classList.add('open');
+    }
+  });
+});
+
+// Reset accordion state when resizing back to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > MOBILE_BREAKPOINT) {
+    closeAllDropdowns();
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// CLOSE MENU ON LINK CLICK (only real navigation links, not accordion toggles)
+navLinks.querySelectorAll('a:not(.dropdown-toggle)').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    closeAllDropdowns();
+  });
 });
 
 // CONTACT FORM SUBMIT (PLACEHOLDER)
@@ -42,7 +78,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.service-card, .process-step, .about-right').forEach(el => {
+document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, .proc-step, .testimonial-card, .feature-tag, .about-left').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
