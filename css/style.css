@@ -75,8 +75,10 @@ body {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 28px;
 }
+
+.nav-links > li { position: relative; }
 
 .nav-links a {
   text-decoration: none;
@@ -88,6 +90,113 @@ body {
 }
 
 .nav-links a:hover { opacity: 1; }
+
+/* Dropdown toggle (top-level item with a menu) */
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.caret {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  opacity: 0.6;
+  transition: transform 0.25s ease, opacity 0.2s;
+}
+
+.has-dropdown:hover .caret {
+  transform: rotate(-135deg) translateY(-1px);
+  opacity: 1;
+}
+
+/* Dropdown card */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 230px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 14px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 120;
+}
+
+/* Hover bridge so the menu doesn't close in the gap */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.has-dropdown:hover .dropdown-menu,
+.has-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 1;
+  color: var(--dark);
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background: var(--light-bg);
+  color: var(--orange);
+}
+
+.dd-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.dd-desc {
+  font-size: 12px;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.dd-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
 
 .btn-nav {
   background: var(--orange) !important;
@@ -547,16 +656,107 @@ body {
    RESPONSIVE
    =========================== */
 @media (max-width: 900px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* MOBILE NAV — accordion style */
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 16px 20px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links > li {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links > li:last-child {
+    border-bottom: none;
+    margin-top: 14px;
+  }
+
+  .nav-links > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 4px;
+    font-size: 15px;
+    opacity: 1;
+  }
+
+  /* Caret becomes accordion indicator */
+  .caret {
+    margin-left: auto;
+    transform: rotate(45deg);
+  }
+
+  .has-dropdown.open .caret {
+    transform: rotate(-135deg);
+  }
+
+  /* Accordion panel */
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    min-width: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 8px 8px;
+    margin: 0;
+    background: transparent;
+    opacity: 1;
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, visibility 0.35s;
+  }
+
+  .dropdown-menu::before { display: none; }
+
+  .has-dropdown.open .dropdown-menu {
+    visibility: visible;
+    pointer-events: auto;
+    max-height: 500px;
+  }
+
+  /* Desktop hover should not open accordions on touch/mobile */
+  .has-dropdown:hover .dropdown-menu,
+  .has-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    transform: none;
+  }
+
+  .has-dropdown:not(.open):hover .dropdown-menu,
+  .has-dropdown:not(.open):focus-within .dropdown-menu {
+    visibility: hidden;
+    pointer-events: none;
+    max-height: 0;
+  }
+
+  .dropdown-menu a {
+    padding: 12px 12px;
+  }
 }
 
 @media (max-width: 640px) {
-  .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--white); padding: 20px 24px; flex-direction: column; gap: 20px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow); }
-  .nav-links.open { display: flex; }
-  .hamburger { display: flex; }
   .services-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
@@ -564,4 +764,8 @@ body {
   .stat-divider { display: none; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
 }
