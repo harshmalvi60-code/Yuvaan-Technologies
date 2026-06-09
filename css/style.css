@@ -1482,3 +1482,240 @@ body {
   gap: 10px;
   margin-bottom: 16px;
 }
+
+/* ===========================
+   RTO FIXER — PRODUCT PAGE
+   =========================== */
+/* Hero trust tags */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.trust-tag {
+  background: var(--light-bg);
+  border: 1px solid var(--border);
+  color: var(--dark);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 100px;
+}
+
+/* Problem two-card grid */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.problem-card {
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+}
+
+.problem-card.dark {
+  background: var(--dark);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.problem-card.light {
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.problem-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.problem-card.dark .problem-eyebrow { color: rgba(255,255,255,0.45); }
+.problem-card.light .problem-eyebrow { color: var(--gray); }
+
+.problem-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.problem-card.dark h3 { color: var(--orange); }
+.problem-card.light h3 { color: #16a34a; }
+
+.problem-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.problem-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.problem-card.dark .problem-list li { color: rgba(255,255,255,0.72); }
+.problem-card.light .problem-list li { color: var(--gray); }
+
+.problem-list.bad li::before {
+  content: '✕';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.problem-list.good li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #16a34a;
+  font-weight: 700;
+}
+
+/* Solution pillars banner */
+.solution-banner {
+  background: var(--dark);
+  border-radius: var(--radius);
+  padding: 52px 44px;
+}
+
+.solution-banner h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 800;
+  color: var(--white);
+  text-align: center;
+  letter-spacing: -0.5px;
+  margin-bottom: 44px;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.pillar-num {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.pillar h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.pillar p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* Feature groups */
+.feature-group { margin-bottom: 52px; }
+.feature-group:last-child { margin-bottom: 0; }
+
+.feature-group-head { margin-bottom: 24px; }
+
+.feature-group-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+
+.feature-group-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* 2-up grid reusing service-card */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.grid-2 .service-card,
+.grid-2 .service-card:nth-child(n+4) {
+  grid-column: auto;
+  position: relative;
+}
+
+/* Outcome tiles */
+.outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.outcome-tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.outcome-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.outcome-arrow {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+
+.outcome-tile h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.outcome-tile p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .outcome-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .pillars { grid-template-columns: 1fr; }
+  .outcome-grid { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
