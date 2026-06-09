@@ -78,7 +78,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.service-card, .process-step, .about-right').forEach(el => {
+document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, .proc-step, .testimonial-card, .feature-tag, .about-left').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
