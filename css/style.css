@@ -1380,3 +1380,72 @@ body {
   .footer-bottom { flex-direction: column; text-align: center; }
   .dash-float-1, .dash-float-2 { display: none; }
 }
+
+/* ===========================
+   INNER PAGE HERO
+   =========================== */
+.page-hero {
+  background: var(--white);
+  padding: 170px 0 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero .hero-glow {
+  width: 600px;
+  height: 600px;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+}
+
+.page-sub {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ===========================
+   PRODUCTS PAGE GRID
+   (reuses .service-card styling)
+   =========================== */
+.products-page { background: var(--light-bg); }
+
+.products-page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Neutralize the homepage 3-2-2 span rules in this 4-up grid */
+.products-page-grid .service-card,
+.products-page-grid .service-card:nth-child(n+4) {
+  grid-column: auto;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .products-page-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .products-page-grid { grid-template-columns: 1fr; }
+}
