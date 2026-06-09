@@ -1449,3 +1449,36 @@ body {
 @media (max-width: 560px) {
   .products-page-grid { grid-template-columns: 1fr; }
 }
+
+/* ===========================
+   PRODUCT DETAIL — FEATURE GRID
+   (reuses .service-card styling, 3-up)
+   =========================== */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-grid .service-card,
+.feature-grid .service-card:nth-child(n+4) {
+  grid-column: auto;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .feature-grid { grid-template-columns: 1fr; }
+}
+
+/* Inline NEW badge for product hero eyebrow */
+.hero-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
