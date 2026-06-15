@@ -375,16 +375,6 @@ body.cursor-ready .cursor-ring { opacity: 1; }
   position: relative;
   perspective: 1200px;
 }
-.hero-visual .dash-card {
-  transform: rotateY(-8deg) rotateX(4deg);
-  transition: transform 0.6s var(--ease-out);
-  animation: cardFloat 7s var(--ease-in-out) infinite;
-}
-.hero-visual:hover .dash-card { transform: rotateY(0) rotateX(0); }
-@keyframes cardFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -14px; }
-}
 .hero-visual .orbit {
   position: absolute;
   inset: -8% -6%;
@@ -398,6 +388,236 @@ body.cursor-ready .cursor-ring { opacity: 1; }
 
 .hero-visual .dash-float {
   backdrop-filter: blur(6px);
+}
+
+/* ----- Premium Video Showcase ----- */
+.video-showcase {
+  position: relative;
+  z-index: 2;
+  transform: rotateY(-7deg) rotateX(3deg);
+  transition: transform 0.7s var(--ease-out);
+  animation: cardFloat 7s var(--ease-in-out) infinite;
+  will-change: transform;
+}
+.hero-visual:hover .video-showcase { transform: rotateY(0) rotateX(0); }
+@keyframes cardFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -14px; }
+}
+
+/* Orange brand glow behind the frame */
+.vs-glow {
+  position: absolute;
+  inset: -14% -10%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(248,80,38,0.35), transparent 55%),
+    radial-gradient(ellipse at 75% 85%, rgba(248,80,38,0.20), transparent 60%);
+  filter: blur(40px);
+  z-index: -1;
+  opacity: 0.9;
+  animation: glowDrift 8s var(--ease-in-out) infinite alternate;
+}
+@keyframes glowDrift {
+  to { transform: translate(20px, -10px) scale(1.05); opacity: 1; }
+}
+
+/* The frame itself — feels like a premium media surface */
+.vs-frame {
+  position: relative;
+  background: linear-gradient(160deg, #1b1b1b 0%, #0d0d0d 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  padding: 14px 14px 16px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.45),
+    0 10px 30px rgba(248,80,38,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+/* subtle glassy sheen along the top */
+.vs-frame::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+}
+
+/* Browser-style chrome bar */
+.vs-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+}
+.vs-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.vs-dot.r { background: #ff5f57; }
+.vs-dot.y { background: #ffbd2e; }
+.vs-dot.g { background: #28c840; }
+.vs-label {
+  margin-left: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.vs-live {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+/* Video stage */
+.vs-stage {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  isolation: isolate;
+}
+.vs-poster,
+.vs-stage iframe,
+.vs-stage video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  display: block;
+  transition: opacity 0.5s var(--ease-out), transform 6s var(--ease-out);
+}
+.vs-poster {
+  transform: scale(1.04);
+  opacity: 1;
+}
+.video-showcase.is-playing .vs-poster,
+.video-showcase.is-playing .vs-shade,
+.video-showcase.is-playing .vs-play,
+.video-showcase.is-playing .vs-caption {
+  opacity: 0;
+  pointer-events: none;
+}
+.video-showcase.is-playing .vs-poster { transform: scale(1.12); }
+
+.vs-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%),
+    radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.35) 100%);
+  transition: opacity 0.5s var(--ease-out);
+  pointer-events: none;
+}
+
+/* Custom play button */
+.vs-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  box-shadow: 0 14px 40px rgba(248,80,38,0.55);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s;
+}
+.vs-play:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 18px 50px rgba(248,80,38,0.75);
+}
+.vs-play:focus-visible {
+  outline: 3px solid rgba(255,255,255,0.85);
+  outline-offset: 4px;
+}
+.vs-play-icon {
+  width: 0; height: 0;
+  border-left: 18px solid #fff;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  margin-left: 5px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+}
+.vs-play-ring,
+.vs-play-ring.d2 {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  opacity: 0.65;
+  animation: playPulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+.vs-play-ring.d2 { animation-delay: 1.3s; }
+@keyframes playPulse {
+  0%   { transform: scale(1);   opacity: 0.65; }
+  80%  { transform: scale(1.7); opacity: 0;    }
+  100% { transform: scale(1.7); opacity: 0;    }
+}
+
+/* Caption overlay */
+.vs-caption {
+  position: absolute;
+  bottom: 18px; left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+  transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out);
+}
+.vs-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(248,80,38,0.35);
+  padding: 5px 12px;
+  border-radius: 100px;
+  align-self: flex-start;
+}
+.vs-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--white);
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .video-showcase { transform: none; }
+  .vs-play { width: 72px; height: 72px; }
+  .vs-play-icon { border-left-width: 16px; border-top-width: 10px; border-bottom-width: 10px; }
+}
+@media (max-width: 560px) {
+  .vs-frame { border-radius: 22px; padding: 10px 10px 12px; }
+  .vs-stage { border-radius: 14px; }
+  .vs-play { width: 64px; height: 64px; }
+  .vs-caption { bottom: 14px; left: 16px; }
+  .vs-title { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-showcase { animation: none; }
+  .vs-glow { animation: none; }
+  .vs-play-ring, .vs-play-ring.d2 { animation: none; opacity: 0; }
 }
 
 /* Scroll cue */

@@ -124,44 +124,36 @@
         </div>
       </div>
 
-      <!-- Layered dashboard visual (reuses brand .dash-card) -->
+      <!-- Premium video showcase (replaces dashboard graphic) -->
       <div class="hero-visual" data-parallax="14">
         <div class="orbit" aria-hidden="true"></div>
-        <div class="dash-card">
-          <div class="dash-top">
-            <div class="dash-title"><span class="dash-dot"></span>Growth Overview</div>
-            <div class="dash-period">Last 30 days</div>
-          </div>
-          <div class="dash-metrics">
-            <div class="dash-metric">
-              <span class="dm-label">ROAS</span>
-              <span class="dm-value">5.8x</span>
-              <span class="dm-trend up">▲ 38%</span>
+
+        <div class="video-showcase" id="heroVideo" data-yt="csNAZ_7sLao">
+          <div class="vs-glow" aria-hidden="true"></div>
+          <div class="vs-frame">
+            <div class="vs-chrome" aria-hidden="true">
+              <span class="vs-dot r"></span>
+              <span class="vs-dot y"></span>
+              <span class="vs-dot g"></span>
+              <span class="vs-label">yuvaan.tech / showreel</span>
+              <span class="vs-live">● LIVE</span>
             </div>
-            <div class="dash-metric">
-              <span class="dm-label">Revenue</span>
-              <span class="dm-value">₹42.6L</span>
-              <span class="dm-trend up">▲ Revenue ↑</span>
+            <div class="vs-stage" id="heroVideoStage">
+              <img class="vs-poster"
+                   src="https://i.ytimg.com/vi/csNAZ_7sLao/maxresdefault.jpg"
+                   onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/csNAZ_7sLao/hqdefault.jpg';"
+                   alt="Yuvaan Technologies showreel"/>
+              <div class="vs-shade" aria-hidden="true"></div>
+              <button class="vs-play" id="heroVideoPlay" type="button" aria-label="Play showreel">
+                <span class="vs-play-ring"></span>
+                <span class="vs-play-ring d2"></span>
+                <span class="vs-play-icon" aria-hidden="true"></span>
+              </button>
+              <div class="vs-caption">
+                <span class="vs-tag">▶ Brand Reel</span>
+                <span class="vs-title">How we engineer growth</span>
+              </div>
             </div>
-          </div>
-          <div class="dash-chart">
-            <svg viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F85026" stop-opacity="0.28"/>
-                  <stop offset="100%" stop-color="#F85026" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <polyline class="chart-area" points="0,95 40,82 80,88 120,60 160,66 200,40 240,46 280,22 320,12 320,120 0,120"/>
-              <polyline class="chart-line" points="0,95 40,82 80,88 120,60 160,66 200,40 240,46 280,22 320,12"/>
-              <circle class="chart-pulse" cx="320" cy="12" r="4"/>
-            </svg>
-            <div class="chart-grid"><span></span><span></span><span></span></div>
-          </div>
-          <div class="dash-foot">
-            <div class="df-item"><span class="df-num">12.4%</span><span class="df-label">Conv. Rate</span></div>
-            <div class="df-item"><span class="df-num">2.1x</span><span class="df-label">LTV / CAC</span></div>
-            <div class="df-item"><span class="df-num">68%</span><span class="df-label">Retention</span></div>
           </div>
         </div>
         <div class="dash-float dash-float-1">⚡ Conversions ↑ 24%</div>

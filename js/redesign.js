@@ -260,6 +260,85 @@
   }
 
   /* ----------------------------------------------------------------------
+     11. HERO VIDEO SHOWCASE
+         - autoplay muted (in loop) when scrolled into view
+         - custom play button unmutes + reveals native controls
+     ---------------------------------------------------------------------- */
+  var heroVideo = document.getElementById('heroVideo');
+  if (heroVideo) {
+    var ytId = heroVideo.getAttribute('data-yt');
+    var stage = document.getElementById('heroVideoStage');
+    var playBtn = document.getElementById('heroVideoPlay');
+    var ambientIframe = null;
+    var ambientLoaded = false;
+
+    function buildSrc(opts) {
+      var params = [
+        'autoplay=1',
+        'mute=' + (opts.mute ? 1 : 0),
+        'controls=' + (opts.controls ? 1 : 0),
+        'loop=' + (opts.loop ? 1 : 0),
+        opts.loop ? 'playlist=' + ytId : '',
+        'modestbranding=1',
+        'rel=0',
+        'playsinline=1',
+        'disablekb=' + (opts.controls ? 0 : 1),
+        'iv_load_policy=3'
+      ].filter(Boolean).join('&');
+      return 'https://www.youtube-nocookie.com/embed/' + ytId + '?' + params;
+    }
+
+    function mountAmbient() {
+      if (ambientLoaded) return;
+      ambientLoaded = true;
+      ambientIframe = document.createElement('iframe');
+      ambientIframe.src = buildSrc({ mute: true, controls: false, loop: true });
+      ambientIframe.setAttribute('title', 'Yuvaan Technologies showreel');
+      ambientIframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      ambientIframe.setAttribute('allowfullscreen', '');
+      ambientIframe.setAttribute('loading', 'lazy');
+      // Sits behind the poster/overlay until the user hits play
+      ambientIframe.style.opacity = '0';
+      stage.appendChild(ambientIframe);
+      // Fade the ambient video in once the player has had time to start
+      setTimeout(function () {
+        if (ambientIframe) ambientIframe.style.opacity = '1';
+      }, 900);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var videoObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            mountAmbient();
+            videoObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      videoObs.observe(heroVideo);
+    } else {
+      mountAmbient();
+    }
+
+    if (playBtn) {
+      playBtn.addEventListener('click', function () {
+        // Replace the muted ambient embed with a full-control, unmuted one
+        if (ambientIframe && ambientIframe.parentNode) {
+          ambientIframe.parentNode.removeChild(ambientIframe);
+        }
+        ambientIframe = document.createElement('iframe');
+        ambientIframe.src = buildSrc({ mute: false, controls: true, loop: false });
+        ambientIframe.setAttribute('title', 'Yuvaan Technologies showreel');
+        ambientIframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+        ambientIframe.setAttribute('allowfullscreen', '');
+        stage.appendChild(ambientIframe);
+        ambientLoaded = true;
+        heroVideo.classList.add('is-playing');
+      });
+    }
+  }
+
+  /* ----------------------------------------------------------------------
      RAF-throttled scroll loop
      ---------------------------------------------------------------------- */
   var ticking = false;
