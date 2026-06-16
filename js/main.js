@@ -289,3 +289,49 @@ if (form) {
     if (e.key === 'Escape' && modal.classList.contains('open')) close();
   });
 })();
+
+/* =================================================================
+   CONTACT MODAL + SMOOTH SCROLL
+   ================================================================= */
+(function () {
+  const modal = document.getElementById('contactModal');
+  const triggers = document.querySelectorAll('[data-open-contact]');
+
+  if (modal && triggers.length) {
+    let lastFocused = null;
+    function open() {
+      lastFocused = document.activeElement;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const first = modal.querySelector('input, textarea, button');
+      if (first) setTimeout(() => first.focus(), 200);
+    }
+    function close() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+    triggers.forEach(t => t.addEventListener('click', (e) => { e.preventDefault(); open(); }));
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) close();
+    });
+  }
+
+  /* Smooth scroll for in-page anchors marked [data-scroll] */
+  document.querySelectorAll('[data-scroll]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id && id.startsWith('#')) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+})();
