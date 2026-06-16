@@ -3219,3 +3219,44 @@ body {
   .x-prod { min-height: 0; padding: 30px 26px; }
   .x-prod h3 { font-size: 22px; }
 }
+
+/* =================================================================
+   STATEMENT MARQUEE — scrolling brand mission
+   ================================================================= */
+.x-statement {
+  background: var(--white);
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.x-stmt-marquee .marquee-track {
+  animation-duration: 60s;
+  gap: 36px;
+  align-items: center;
+}
+
+.x-stmt-item {
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  color: var(--dark);
+  padding: 0 12px;
+}
+
+.x-stmt-sep {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--orange);
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .x-statement { padding: 40px 0; }
+  .x-stmt-item { font-size: 18px; }
+  .x-stmt-sep { font-size: 18px; }
+}
