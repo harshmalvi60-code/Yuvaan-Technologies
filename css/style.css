@@ -2172,8 +2172,8 @@ body {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.06fr 0.94fr;
-  gap: 56px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
   align-items: center;
 }
 
@@ -2236,11 +2236,21 @@ body {
   100%      { transform: translateY(-75%); }
 }
 
+.x-hero-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
 .x-hero-sub {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--gray);
   max-width: 540px;
-  line-height: 1.8;
+  line-height: 1.7;
   margin-bottom: 36px;
 }
 
@@ -2749,7 +2759,7 @@ body {
    ========================================================= */
 @media (max-width: 1024px) {
   .x-hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .x-hero-right { max-width: 460px; }
+  .x-hero-right { max-width: 540px; }
   .x-svc { grid-template-columns: 1fr; gap: 34px; }
   .x-svc-aside { position: static; }
   .x-svc-stage { display: flex; align-items: center; gap: 24px; padding: 28px; }
