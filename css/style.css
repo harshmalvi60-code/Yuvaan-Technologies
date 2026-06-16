@@ -2333,104 +2333,100 @@ body {
 .x-ticker .section-label { margin-bottom: 26px; }
 
 /* =========================================================
-   SERVICES — STICKY STORYLINE
+   SERVICES — EQUAL CARD GRID
    ========================================================= */
 .x-services { padding: 110px 0; background: var(--light-bg); }
 .x-svc-head { margin-bottom: 60px; max-width: 720px; }
 .x-svc-head .section-label { margin-bottom: 14px; }
+.x-svc-intro { font-size: 16px; color: var(--gray); line-height: 1.7; margin-top: 18px; max-width: 540px; }
 
-.x-svc { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: start; }
-
-.x-svc-aside { position: sticky; top: 120px; }
-.x-svc-stage {
-  background: var(--dark);
-  border-radius: 22px;
-  padding: 40px 36px;
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.28);
-}
-.x-svc-stage::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(420px 280px at 80% 0%, rgba(248,80,38,0.28), transparent 60%);
-  pointer-events: none;
-}
-.x-svc-index {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(80px, 9vw, 130px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -4px;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255,255,255,0.35);
-  position: relative;
-}
-.x-svc-stage-ic { font-size: 40px; margin: 18px 0 14px; position: relative; }
-.x-svc-stage-name {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  position: relative;
-  min-height: 30px;
-}
-.x-svc-progress {
-  margin-top: 26px;
-  height: 3px;
-  background: rgba(255,255,255,0.14);
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-}
-.x-svc-progress span {
-  display: block; height: 100%; width: 16.66%;
-  background: var(--orange);
-  border-radius: 3px;
-  transition: width 0.5s var(--ease);
-}
-.x-svc-count { margin-top: 14px; font-size: 12px; letter-spacing: 1px; color: rgba(255,255,255,0.5); position: relative; }
-.x-svc-count [data-current] { color: var(--orange); font-weight: 700; }
-
-.x-svc-list { display: flex; flex-direction: column; }
-.x-svc-item {
+.x-svc-grid {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+.x-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+}
+.x-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.x-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(248,80,38,0.35);
+}
+.x-card:hover::before { transform: scaleX(1); }
+
+.x-card-ic {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(248,80,38,0.10);
+  border: 1px solid rgba(248,80,38,0.20);
+  display: inline-flex;
   align-items: center;
-  padding: 32px 8px;
-  border-top: 1px solid var(--border);
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 22px;
+}
+
+.x-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
+.x-card p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.x-card-btn {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 10px;
+  padding: 11px 22px;
+  border-radius: var(--radius-sm);
+  background: var(--dark);
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
-  opacity: 0.5;
-  transition: opacity 0.4s var(--ease), padding 0.4s var(--ease);
+  transition: background 0.3s, color 0.3s, gap 0.3s var(--ease), box-shadow 0.3s;
 }
-.x-svc-item:last-child { border-bottom: 1px solid var(--border); }
-.x-svc-item.is-active { opacity: 1; }
-.x-svc-item:hover { opacity: 1; }
-.x-svc-no {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--orange);
+.x-card-btn span { transition: transform 0.3s var(--ease); }
+.x-card-btn:hover {
+  background: var(--orange);
+  gap: 14px;
+  box-shadow: 0 8px 22px rgba(248,80,38,0.32);
 }
-.x-svc-body h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(20px, 2.4vw, 28px);
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 8px;
-  transition: color 0.3s;
-}
-.x-svc-body p { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 460px; margin-bottom: 10px; }
-.x-svc-tags { font-size: 12px; font-weight: 600; letter-spacing: 0.4px; color: var(--orange); text-transform: uppercase; }
-.x-svc-go {
-  font-size: 22px;
-  color: var(--dark);
-  transform: translateX(-6px);
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s var(--ease);
-}
-.x-svc-item.is-active .x-svc-go,
-.x-svc-item:hover .x-svc-go { opacity: 1; transform: translateX(0); color: var(--orange); }
+.x-card-btn:hover span { transform: translateX(2px); }
 
 /* =========================================================
    ABOUT — NARRATIVE
@@ -2760,12 +2756,7 @@ body {
 @media (max-width: 1024px) {
   .x-hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .x-hero-right { max-width: 540px; }
-  .x-svc { grid-template-columns: 1fr; gap: 34px; }
-  .x-svc-aside { position: static; }
-  .x-svc-stage { display: flex; align-items: center; gap: 24px; padding: 28px; }
-  .x-svc-index { font-size: 64px; }
-  .x-svc-stage-ic { margin: 0; }
-  .x-svc-progress { flex: 1; margin-top: 0; min-width: 120px; }
+  .x-svc-grid { grid-template-columns: repeat(2, 1fr); }
   .x-why-grid { grid-template-columns: 1fr; gap: 40px; }
   .x-why-head { position: static; }
   .x-ai-grid { grid-template-columns: 1fr; gap: 50px; }
@@ -2791,8 +2782,7 @@ body {
   .x-hero-meta { gap: 24px; }
   .x-about-band { grid-template-columns: 1fr 1fr; }
   .x-about-foot { flex-direction: column; align-items: flex-start; }
-  .x-svc-item { grid-template-columns: auto 1fr; }
-  .x-svc-go { display: none; }
+  .x-svc-grid { grid-template-columns: 1fr; }
   .x-scroll-cue { display: none; }
 }
 
