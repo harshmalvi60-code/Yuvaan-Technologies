@@ -247,3 +247,45 @@ if (form) {
     });
   }
 })();
+
+/* =================================================================
+   HERO VIDEO LIGHTBOX
+   Injects the YouTube iframe only on click (fast initial load),
+   and removes it on close to stop playback.
+   ================================================================= */
+(function () {
+  const modal = document.getElementById('videoModal');
+  const frame = document.getElementById('videoFrame');
+  const triggers = document.querySelectorAll('[data-video]');
+  if (!modal || !frame || !triggers.length) return;
+
+  let lastFocused = null;
+
+  function open(id) {
+    lastFocused = document.activeElement;
+    frame.innerHTML =
+      '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Yuvaan Technologies video" ' +
+      'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.x-modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function close() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => { frame.innerHTML = ''; }, 300);
+    if (lastFocused) lastFocused.focus();
+  }
+
+  triggers.forEach(t => t.addEventListener('click', () => open(t.dataset.video)));
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+})();
