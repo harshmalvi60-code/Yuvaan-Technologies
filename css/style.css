@@ -3047,7 +3047,7 @@ body {
   white-space: nowrap;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: clamp(26px, 3.4vw, 44px);
+  font-size: clamp(18px, 2vw, 26px);
   letter-spacing: -0.5px;
   color: var(--dark);
   padding: 0 32px;
@@ -3069,6 +3069,6 @@ body {
 .x-ticker .section-label { margin-bottom: 36px; }
 
 @media (max-width: 640px) {
-  .x-brand { padding: 0 22px; font-size: 24px; }
+  .x-brand { padding: 0 18px; font-size: 17px; }
   .x-brand-sep { font-size: 10px; }
 }
