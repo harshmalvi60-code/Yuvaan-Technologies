@@ -3260,3 +3260,171 @@ body {
   .x-stmt-item { font-size: 18px; }
   .x-stmt-sep { font-size: 18px; }
 }
+
+/* =================================================================
+   WHY YUVAAN — COMPACT GRID
+   ================================================================= */
+.x-why2 {
+  padding: 88px 0;
+  background: var(--light-bg);
+}
+.x-why2-head {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+.x-why2-head .section-label { text-align: center; margin-bottom: 12px; }
+
+.x-why2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.x-why2-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 24px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s, border-color 0.35s;
+  overflow: hidden;
+}
+.x-why2-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.x-why2-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(248,80,38,0.35);
+}
+.x-why2-card:hover::before { transform: scaleX(1); }
+
+.x-why2-no {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.x-why2-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+}
+.x-why2-card p {
+  font-size: 13.5px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* =================================================================
+   PROCESS — COMPACT HORIZONTAL STEPS
+   ================================================================= */
+.x-process2 {
+  padding: 88px 0;
+  background: var(--white);
+}
+.x-process2-head {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+.x-process2-head .section-label { text-align: center; margin-bottom: 12px; }
+
+.x-process2-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  position: relative;
+}
+.x-process2-grid::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), rgba(248,80,38,0.2));
+  z-index: 0;
+}
+
+.x-step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4px 8px;
+  transition: transform 0.35s var(--ease);
+}
+.x-step:hover { transform: translateY(-4px); }
+
+.x-step-no {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 22px rgba(248,80,38,0.18);
+  transition: background 0.3s, color 0.3s, transform 0.3s var(--ease);
+}
+.x-step:hover .x-step-no {
+  background: var(--orange);
+  color: var(--white);
+  transform: scale(1.06);
+}
+
+.x-step h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.2px;
+  margin-bottom: 6px;
+}
+.x-step p {
+  font-size: 12.5px;
+  color: var(--gray);
+  line-height: 1.55;
+}
+
+/* =================================================================
+   RESPONSIVE
+   ================================================================= */
+@media (max-width: 1024px) {
+  .x-why2-grid { grid-template-columns: repeat(2, 1fr); }
+  .x-process2-grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+}
+@media (max-width: 768px) {
+  .x-why2 { padding: 64px 0; }
+  .x-process2 { padding: 64px 0; }
+  .x-process2-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .x-process2-grid::before { display: none; }
+}
+@media (max-width: 480px) {
+  .x-why2-grid { grid-template-columns: 1fr; }
+  .x-process2-grid { grid-template-columns: 1fr; }
+}
