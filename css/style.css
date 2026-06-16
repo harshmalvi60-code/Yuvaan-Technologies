@@ -3036,3 +3036,39 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .x-video-play::before { animation: none; }
 }
+
+/* =================================================================
+   FEATURED CLIENTS — premium marquee
+   ================================================================= */
+.x-brand-marquee { padding: 14px 0; }
+.x-brand-marquee .marquee-track { gap: 0; align-items: center; }
+
+.x-brand {
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3.4vw, 44px);
+  letter-spacing: -0.5px;
+  color: var(--dark);
+  padding: 0 32px;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.x-brand:hover { color: var(--orange); transform: translateY(-2px); }
+
+.x-brand-sep {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--orange);
+  opacity: 0.85;
+  flex-shrink: 0;
+  width: 14px;
+}
+
+.x-ticker .section-label { margin-bottom: 36px; }
+
+@media (max-width: 640px) {
+  .x-brand { padding: 0 22px; font-size: 24px; }
+  .x-brand-sep { font-size: 10px; }
+}
