@@ -2794,3 +2794,61 @@ body {
   .x-rotate-col { animation: none; }
   .x-orb-1, .x-orb-2, .x-scroll-line::after, .x-flow-line::after, .x-node-dot::after { animation: none; }
 }
+
+/* =================================================================
+   INNER PAGES — premium treatment (orbs + motion)
+   Reuses the same brand tokens; applies to .page-hero / .product-hero
+   ================================================================= */
+@keyframes xFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -18px); }
+}
+
+.page-hero, .product-hero { position: relative; }
+
+.page-hero::before, .product-hero::before {
+  content: "";
+  position: absolute;
+  width: 440px; height: 440px;
+  top: -150px; right: -120px;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(248,80,38,0.15), transparent 65%);
+  animation: xFloat 10s var(--ease) infinite;
+}
+.page-hero::after, .product-hero::after {
+  content: "";
+  position: absolute;
+  width: 360px; height: 360px;
+  bottom: -140px; left: -100px;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(223,244,247,0.6), transparent 65%);
+  animation: xFloat 13s var(--ease) infinite reverse;
+}
+
+/* Keep hero content above the orbs */
+.page-hero-inner { position: relative; z-index: 2; }
+
+/* Premium dot before centered hero eyebrow */
+.page-hero .section-label.center {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.page-hero .section-label.center::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 4px rgba(248,80,38,0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero::before, .page-hero::after,
+  .product-hero::before, .product-hero::after { animation: none; }
+}

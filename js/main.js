@@ -68,29 +68,48 @@ if (form) {
   });
 }
 
-// SCROLL REVEAL (lightweight)
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, .proc-step, .testimonial-card, .feature-tag, .about-left').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
-
 /* =================================================================
-   HOMEPAGE REDESIGN — premium interactions
-   (guarded; no-ops on pages without these elements)
+   PREMIUM EXPERIENCE LAYER
+   Shared across homepage + inner pages.
+   - Homepage uses explicit .reveal / .magnetic / [data-count] markup.
+   - Inner pages get the same treatment auto-applied here.
    ================================================================= */
 (function () {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isHome = !!document.querySelector('.x-hero');
+
+  /* ---- Auto-parse a metric string into count data ("₹14.2L" -> prefix ₹, 14.2, L) ---- */
+  function initAutoCounter(el) {
+    if (el.hasAttribute('data-count')) return;
+    const m = el.textContent.trim().match(/^(\D*?)(\d+(?:\.\d+)?)(.*)$/);
+    if (!m) return;
+    const numStr = m[2];
+    const dot = numStr.indexOf('.');
+    el.dataset.prefix = m[1];
+    el.dataset.count = numStr;
+    el.dataset.suffix = m[3];
+    el.dataset.decimals = dot >= 0 ? String(numStr.length - dot - 1) : '0';
+    el.textContent = m[1] + '0' + m[3];
+  }
+
+  /* ---- Inner-page auto-enhancement ---- */
+  if (!isHome) {
+    const revealSel = [
+      '.page-hero-inner > *',
+      '.product-hero .hero-left > *',
+      '.product-hero .hero-right',
+      '.section-title', '.section-intro',
+      '.service-card', '.problem-card', '.pillar', '.outcome-tile',
+      '.feature-group-head', '.solution-bullets', '.solution-split .hero-right',
+      '.price-card', '.quote-banner', '.trust-row', '.compare-table',
+      '.outcomes-cta', '.about-stats', '.why-card', '.feature-tag'
+    ].join(',');
+    document.querySelectorAll(revealSel).forEach(el => el.classList.add('reveal'));
+    document.querySelectorAll('.outcome-metric').forEach(initAutoCounter);
+  }
+
+  /* ---- Make all primary CTAs magnetic ---- */
+  document.querySelectorAll('.btn-primary, .btn-dark').forEach(b => b.classList.add('magnetic'));
 
   /* ---- Scroll reveal (.reveal -> .in) ---- */
   const revealEls = document.querySelectorAll('.reveal');
@@ -143,7 +162,7 @@ document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, 
     counters.forEach(el => cObs.observe(el));
   }
 
-  /* ---- Services sticky storyline ---- */
+  /* ---- Services sticky storyline (homepage) ---- */
   const svcItems = Array.from(document.querySelectorAll('.x-svc-item'));
   const stage = document.querySelector('.x-svc-stage');
   if (svcItems.length && stage) {
@@ -173,7 +192,7 @@ document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, 
     svcItems.forEach(it => svcObs.observe(it));
   }
 
-  /* ---- Process timeline progressive fill ---- */
+  /* ---- Process timeline progressive fill (homepage) ---- */
   const timeline = document.querySelector('.x-timeline');
   const fill = document.querySelector('[data-fill]');
   if (timeline && fill && !reduceMotion) {
@@ -207,7 +226,7 @@ document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, 
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 
-  /* ---- Hero card tilt + orb parallax ---- */
+  /* ---- Hero card tilt + orb parallax (homepage) ---- */
   const hero = document.querySelector('.x-hero');
   const tilt = document.querySelector('.x-tilt');
   const orbs = document.querySelectorAll('.x-hero .x-orb');
