@@ -215,17 +215,6 @@ if (form) {
 
   if (reduceMotion) return;
 
-  /* ---- Magnetic buttons ---- */
-  document.querySelectorAll('.magnetic').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const r = btn.getBoundingClientRect();
-      const mx = e.clientX - r.left - r.width / 2;
-      const my = e.clientY - r.top - r.height / 2;
-      btn.style.transform = `translate(${mx * 0.18}px, ${my * 0.28}px)`;
-    });
-    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-  });
-
   /* ---- Hero card tilt + orb parallax (homepage) ---- */
   const hero = document.querySelector('.x-hero');
   const tilt = document.querySelector('.x-tilt');
@@ -361,4 +350,94 @@ if (form) {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
   update();
+})();
+
+/* =================================================================
+   CREATIVE CUSTOM CURSOR
+   - Dot tracks the pointer in real time
+   - Ring trails with eased lerp
+   - Morphs on interactive elements with a contextual label
+   - Skipped for touch devices and reduced-motion
+   ================================================================= */
+(function () {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reduceMotion || !fineHover) return;
+
+  const dot = document.createElement('div');
+  const ring = document.createElement('div');
+  const label = document.createElement('span');
+  dot.className = 'yt-cursor-dot';
+  ring.className = 'yt-cursor-ring';
+  label.className = 'yt-cursor-label';
+  ring.appendChild(label);
+  document.body.append(dot, ring);
+  document.documentElement.classList.add('has-yt-cursor');
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my;
+  let hidden = true;
+
+  function setLabel(text) {
+    if (text) { label.textContent = text; ring.classList.add('has-label'); }
+    else { ring.classList.remove('has-label'); label.textContent = ''; }
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    if (hidden) {
+      hidden = false;
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
+    }
+  }, { passive: true });
+
+  window.addEventListener('mouseleave', () => {
+    hidden = true;
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+
+  document.addEventListener('mousedown', () => ring.classList.add('is-down'));
+  document.addEventListener('mouseup',   () => ring.classList.remove('is-down'));
+
+  function tick() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    dot.style.transform  = `translate3d(${mx}px, ${my}px, 0)`;
+    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  /* ---- Contextual morph + label ---- */
+  const linkSel = 'a, button, [role="button"], [data-open-contact], [data-scroll], ' +
+                  '.x-card, .x-prod, .pm-case, .pm-result, .pm-what-card, .x-step, ' +
+                  '.x-why2-card, .x-proj, label, .hamburger';
+  const videoSel = '[data-video], .x-video';
+  const inputSel = 'input, textarea, select, [contenteditable="true"]';
+  const callSel  = '[href^="tel:"]';
+
+  document.addEventListener('mouseover', (e) => {
+    const t = e.target.closest(linkSel + ',' + videoSel + ',' + inputSel);
+    if (!t) { ring.classList.remove('is-hover'); setLabel(''); return; }
+    ring.classList.add('is-hover');
+
+    if (t.matches(videoSel) || t.closest(videoSel)) { setLabel('Watch'); return; }
+    if (t.matches(callSel)  || t.closest(callSel))  { setLabel('Call');  return; }
+    if (t.matches(inputSel)) { ring.classList.add('is-text'); setLabel(''); return; }
+    if (t.matches('a[href^="http"], a[target="_blank"]')) { setLabel('Visit'); return; }
+    if (t.matches('.x-card, .x-prod, .pm-case, .x-proj, .x-step, .x-why2-card, .pm-result, .pm-what-card')) {
+      setLabel('Explore'); return;
+    }
+    if (t.matches('[data-open-contact]')) { setLabel('Connect'); return; }
+    setLabel('');
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (!e.relatedTarget || !e.relatedTarget.closest(linkSel + ',' + videoSel + ',' + inputSel)) {
+      ring.classList.remove('is-hover', 'is-text');
+      setLabel('');
+    }
+  });
 })();

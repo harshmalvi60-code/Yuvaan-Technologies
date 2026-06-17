@@ -4191,3 +4191,99 @@ body { animation: ytPageIn 0.5s ease both; }
   .yt-progress { display: none; }
   html { scroll-behavior: auto; }
 }
+
+/* =================================================================
+   CREATIVE CUSTOM CURSOR
+   - Real-time orange dot + eased trailing ring
+   - Ring morphs and shows a contextual label on interactive elements
+   - Falls back gracefully on touch / reduced-motion (JS guards both)
+   ================================================================= */
+.has-yt-cursor { cursor: none; }
+.has-yt-cursor a,
+.has-yt-cursor button,
+.has-yt-cursor [role="button"],
+.has-yt-cursor label,
+.has-yt-cursor input,
+.has-yt-cursor textarea,
+.has-yt-cursor .hamburger,
+.has-yt-cursor .x-card,
+.has-yt-cursor .x-prod,
+.has-yt-cursor .x-proj,
+.has-yt-cursor .pm-case,
+.has-yt-cursor .x-step { cursor: none; }
+
+.yt-cursor-dot,
+.yt-cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform, width, height, opacity;
+  mix-blend-mode: difference;
+}
+
+.yt-cursor-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+  transition: opacity 0.2s ease, transform 0.12s ease;
+}
+
+.yt-cursor-ring {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  transition: width 0.32s var(--ease), height 0.32s var(--ease),
+              border-color 0.25s ease, background 0.25s ease,
+              opacity 0.2s ease, border-radius 0.25s ease;
+}
+
+.yt-cursor-label {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.2s ease, transform 0.2s var(--ease);
+  white-space: nowrap;
+}
+
+/* Hover on any interactive element: ring expands, fills, label appears */
+.yt-cursor-ring.is-hover {
+  width: 76px; height: 76px;
+  background: rgba(248,80,38,0.92);
+  border-color: rgba(248,80,38,0.92);
+  mix-blend-mode: normal;
+}
+.yt-cursor-ring.has-label .yt-cursor-label {
+  opacity: 1; transform: scale(1);
+}
+
+/* Text-field hover: turn into a thin caret */
+.yt-cursor-ring.is-text {
+  width: 4px; height: 28px;
+  border-radius: 2px;
+  background: var(--orange);
+  border-color: transparent;
+  mix-blend-mode: normal;
+}
+
+/* Click press: subtle pulse */
+.yt-cursor-ring.is-down { transform-origin: center; }
+.yt-cursor-dot { transition: opacity 0.2s ease; }
+
+/* Safety: never let the cursor or progress bar appear above modal */
+.x-modal { z-index: 1000; }
+.yt-cursor-dot, .yt-cursor-ring { z-index: 1500; }
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .yt-cursor-dot, .yt-cursor-ring { display: none !important; }
+  .has-yt-cursor, .has-yt-cursor * { cursor: auto !important; }
+}
