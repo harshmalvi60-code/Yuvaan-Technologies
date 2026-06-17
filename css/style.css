@@ -4357,3 +4357,177 @@ body { animation: ytPageIn 0.5s ease both; }
     font-size: 14px !important;
   }
 }
+
+/* =================================================================
+   REFINEMENT PASS — premium polish + mobile perfection
+   Purely additive. Does not alter colors, fonts, content, or layout.
+   ================================================================= */
+
+/* ---- Smooth, lazy image fade-in ---- */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+img[loading="lazy"].is-loaded { opacity: 1; }
+/* Graceful fallback: fade in via keyframe in case JS misses an image */
+@keyframes ytImgIn { to { opacity: 1; } }
+img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
+
+/* ---- Smoother section transitions between alternating bgs ---- */
+.section + .section,
+.x-products + section,
+.x-services + section { position: relative; }
+
+/* ---- Refined card hover state shared across the site ---- */
+.service-card,
+.product-card,
+.why-card,
+.case-card,
+.outcome-tile,
+.price-card,
+.x-card,
+.x-prod,
+.pm-case,
+.pm-result,
+.pm-what-card,
+.x-why2-card,
+.x-proj,
+.outcome-grid .outcome-tile {
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease),
+              border-color 0.45s var(--ease), background 0.3s ease;
+}
+
+/* Soft inner glow on dark cards */
+.product-card:hover,
+.x-prod:hover,
+.pm-case:hover {
+  box-shadow: 0 22px 60px rgba(248,80,38,0.18),
+              inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ---- Smoother button press ---- */
+.btn-primary, .btn-outline, .btn-nav, .btn-dark, .btn-product, .nav-cta {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---- Link feedback (text links inside copy) ---- */
+.card-link, .case-link, .x-card-btn, .x-prod-cta, .x-proj-cta {
+  position: relative;
+}
+.card-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.card-link:hover::after { transform: scaleX(1); }
+
+/* ---- Performance: skip rendering offscreen cards ---- */
+.x-svc-grid,
+.x-prod-grid,
+.x-why2-grid,
+.pm-cases-grid,
+.pm-what-grid,
+.pm-results-grid,
+.pm-industries-grid,
+.x-portfolio-grid {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px 800px;
+}
+
+/* ---- Hero subtitle rhythm + alignment polish ---- */
+.page-hero .page-sub { letter-spacing: 0.1px; }
+.section-title { letter-spacing: -1px; }
+
+/* ---- Better visual rhythm between paragraphs ---- */
+.section-intro + .section-intro { margin-top: 8px; }
+
+/* =================================================================
+   MOBILE & TABLET — perfected responsiveness
+   ================================================================= */
+
+/* Tablet: shrink the dense nav so 3 dropdowns + 2 green CTAs fit cleanly */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .nav-links { gap: 18px; }
+  .nav-cta { padding: 8px 12px; font-size: 12.5px !important; }
+}
+
+/* General mobile tightening */
+@media (max-width: 900px) {
+  .container { padding: 0 22px; }
+  .page-hero { padding: 130px 0 56px; }
+  .page-hero h1 { line-height: 1.12; }
+  .product-hero { padding: 130px 0 60px; }
+  .cta-banner { padding: 72px 0; }
+  .pm-cases { padding: 64px 0; }
+  .x-portfolio-head { margin-bottom: 36px; }
+}
+
+/* Phone */
+@media (max-width: 640px) {
+  /* Hero text scale */
+  .page-hero h1 { font-size: clamp(28px, 8vw, 38px); letter-spacing: -1px; }
+  .page-sub { font-size: 15px; line-height: 1.7; }
+
+  /* Hero CTA pair: stack full-width */
+  .hero-cta { flex-direction: column; gap: 12px; }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-outline,
+  .hero-cta button.btn-primary { width: 100%; text-align: center; }
+
+  /* Cards: comfortable mobile spacing */
+  .service-card, .feature-tag, .why-card, .case-card, .outcome-tile,
+  .x-card, .x-prod, .pm-case, .pm-result, .pm-what-card, .x-why2-card { padding: 24px 22px; }
+
+  /* Section spacing */
+  .section { padding: 64px 0; }
+  .x-services, .x-products, .x-why2, .x-process2,
+  .pm-results, .pm-cases, .pm-what, .pm-process, .pm-industries,
+  .x-portfolio { padding: 64px 0; }
+
+  /* Headings */
+  .section-title { font-size: clamp(26px, 7vw, 36px); }
+  .x-h2 { font-size: clamp(26px, 7vw, 36px); }
+
+  /* Marquee text-only stays readable */
+  .x-stmt-item { font-size: 16px; padding: 0 4px; }
+
+  /* CTA banner */
+  .cta-buttons { flex-direction: column; }
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-outline { width: 100%; text-align: center; }
+
+  /* Process timeline node alignment on mobile */
+  .x-tl-step.left .x-tl-card,
+  .x-tl-step.right .x-tl-card { display: block; }
+
+  /* Modal padding tightened */
+  .x-modal { padding: 14px; }
+  .x-contact-dialog { padding: 26px 22px 22px; border-radius: 16px; }
+
+  /* Video lightbox: full width minus margins */
+  .x-modal-dialog { width: 100%; }
+
+  /* Nav: hide the underline animation on mobile (cleaner) */
+  .nav-links > li > a:not(.btn-nav)::after { display: none; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .container { padding: 0 18px; }
+  .page-hero { padding: 120px 0 48px; }
+  .section { padding: 56px 0; }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-outline { padding: 13px 24px; font-size: 14px; }
+  .nav-cta { padding: 10px 12px; font-size: 13px !important; }
+  .nav-cta span { display: inline; }
+}
+
+/* Landscape phones: keep the hero usable */
+@media (max-height: 500px) and (orientation: landscape) {
+  .page-hero, .product-hero, .x-hero { min-height: auto; padding-top: 110px; padding-bottom: 40px; }
+}

@@ -472,3 +472,18 @@ if (form) {
   if (contactItem) list.insertBefore(li, contactItem);
   else list.appendChild(li);
 })();
+
+/* =================================================================
+   LAZY IMAGE FADE-IN
+   ================================================================= */
+(function () {
+  const imgs = document.querySelectorAll('img[loading="lazy"]');
+  imgs.forEach(img => {
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('is-loaded');
+    } else {
+      img.addEventListener('load',  () => img.classList.add('is-loaded'), { once: true });
+      img.addEventListener('error', () => img.classList.add('is-loaded'), { once: true });
+    }
+  });
+})();
