@@ -4000,3 +4000,65 @@ body {
   .pm-process-grid { grid-template-columns: 1fr; }
   .pm-industries-grid { grid-template-columns: 1fr; }
 }
+
+/* =================================================================
+   PERFORMANCE MARKETING HERO — readable, premium override
+   ================================================================= */
+.pm-hero {
+  background: var(--dark);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding: 170px 0 80px;
+}
+
+/* hide the default light orbs from .page-hero on this dark hero */
+.pm-hero::before,
+.pm-hero::after { display: none; }
+
+/* glow orbs tuned for dark background */
+.pm-hero .hero-glow {
+  position: absolute;
+  width: 720px; height: 720px;
+  top: -200px; right: -180px;
+  background: radial-gradient(circle, rgba(248,80,38,0.22), transparent 65%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pm-hero .page-hero-inner { position: relative; z-index: 2; }
+
+.pm-hero .section-label.center {
+  color: var(--orange);
+}
+.pm-hero .section-label.center::before {
+  background: var(--orange);
+  box-shadow: 0 0 0 4px rgba(248,80,38,0.20);
+}
+
+.pm-hero h1 {
+  color: var(--white);
+}
+
+.pm-hero .page-sub {
+  color: rgba(255,255,255,0.62);
+}
+
+/* Make the outline button readable on dark */
+.pm-hero .btn-outline {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.28);
+}
+.pm-hero .btn-outline:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+/* Meta strip below CTAs */
+.pm-hero .pm-hero-meta {
+  border-top-color: rgba(255,255,255,0.10);
+}
+.pm-hero .pm-hero-meta span {
+  color: rgba(255,255,255,0.45);
+}
