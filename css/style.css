@@ -2093,10 +2093,11 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(34px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
-  will-change: opacity, transform;
+  filter: blur(6px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
+  will-change: opacity, transform, filter;
 }
-.reveal.in { opacity: 1; transform: none; }
+.reveal.in { opacity: 1; transform: none; filter: blur(0); }
 
 .x-visually-hidden {
   position: absolute; width: 1px; height: 1px;
@@ -4530,4 +4531,80 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
 /* Landscape phones: keep the hero usable */
 @media (max-height: 500px) and (orientation: landscape) {
   .page-hero, .product-hero, .x-hero { min-height: auto; padding-top: 110px; padding-bottom: 40px; }
+}
+
+/* =================================================================
+   CREATIVE LAYER 2 — cursor glow, 3D tilt, auto-hide nav
+   Additive only; brand identity, colors, fonts, content unchanged.
+   ================================================================= */
+
+/* ---- Interactive cards: cursor-follow glow + subtle 3D tilt ---- */
+.yt-tiltcard {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s var(--ease), box-shadow 0.45s var(--ease),
+              border-color 0.45s var(--ease);
+}
+.yt-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+              rgba(248,80,38,0.14), transparent 60%);
+}
+.yt-tiltcard:hover .yt-glow { opacity: 1; }
+
+/* Keep media inside tilt cards from flattening oddly */
+.yt-tiltcard .x-proj-frame,
+.yt-tiltcard img { transform: translateZ(0.01px); }
+
+/* ---- Auto-hide nav on scroll-down, reveal on scroll-up ---- */
+.nav { transition: transform 0.4s var(--ease), background 0.3s ease,
+                   padding 0.3s ease, box-shadow 0.3s ease; }
+.nav.nav-hidden { transform: translateY(-100%); }
+
+/* ---- Logo dot gentle pulse ---- */
+@keyframes ytLogoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+.logo span { display: inline-block; animation: ytLogoPulse 3.5s var(--ease) infinite; }
+
+/* ---- Section-label: animated leading line for a refined editorial feel ---- */
+.section-label:not(.center) { position: relative; }
+
+/* ---- Smoother focus ring already set; add elegant button ripple base ---- */
+.btn-primary, .btn-outline, .btn-dark, .btn-product, .nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+.yt-ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: rgba(255,255,255,0.4);
+  pointer-events: none;
+  animation: ytRipple 0.6s var(--ease) forwards;
+  z-index: 0;
+}
+.btn-outline .yt-ripple { background: rgba(248,80,38,0.25); }
+@keyframes ytRipple {
+  to { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo span { animation: none; }
+  .yt-tiltcard { transform: none !important; }
+  .nav.nav-hidden { transform: none; }
+  .yt-ripple { display: none; }
+}
+
+/* Disable tilt/glow weight on small screens for performance */
+@media (max-width: 900px) {
+  .yt-tiltcard { transform: none !important; }
+  .yt-glow { display: none; }
 }

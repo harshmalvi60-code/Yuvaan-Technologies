@@ -487,3 +487,89 @@ if (form) {
     }
   });
 })();
+
+/* =================================================================
+   CREATIVE LAYER 2 — card tilt/glow, nav auto-hide, button ripple
+   ================================================================= */
+(function () {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---- Button ripple (all pointers, cheap) ---- */
+  document.querySelectorAll('.btn-primary, .btn-outline, .btn-dark, .btn-product, .nav-cta')
+    .forEach(btn => {
+      btn.addEventListener('pointerdown', (e) => {
+        if (reduceMotion) return;
+        const r = btn.getBoundingClientRect();
+        const s = Math.max(r.width, r.height);
+        const span = document.createElement('span');
+        span.className = 'yt-ripple';
+        span.style.width = span.style.height = s + 'px';
+        span.style.left = (e.clientX - r.left) + 'px';
+        span.style.top = (e.clientY - r.top) + 'px';
+        btn.appendChild(span);
+        span.addEventListener('animationend', () => span.remove(), { once: true });
+      });
+    });
+
+  /* ---- Cursor-follow glow + 3D tilt on cards (desktop, fine pointer) ---- */
+  if (fineHover && !reduceMotion && window.innerWidth > 900) {
+    const cardSel = '.service-card, .why-card, .case-card, .outcome-tile, .price-card, ' +
+                    '.feature-tag, .x-card, .x-prod, .pm-case, .pm-result, .pm-what-card, ' +
+                    '.x-why2-card, .x-proj, .testimonial-card, .problem-card, .x-voice';
+    const cards = document.querySelectorAll(cardSel);
+    const MAX = 5; // deg
+
+    cards.forEach(card => {
+      card.classList.add('yt-tiltcard');
+      const glow = document.createElement('span');
+      glow.className = 'yt-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      card.appendChild(glow);
+
+      let raf = null, px = 50, py = 50, rx = 0, ry = 0;
+      function apply() {
+        card.style.setProperty('--mx', px + '%');
+        card.style.setProperty('--my', py + '%');
+        card.style.transform =
+          `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+        raf = null;
+      }
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width;
+        const ny = (e.clientY - r.top) / r.height;
+        px = nx * 100; py = ny * 100;
+        ry = (nx - 0.5) * 2 * MAX;
+        rx = -(ny - 0.5) * 2 * MAX;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+      card.addEventListener('pointerleave', () => {
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ---- Auto-hide nav on scroll-down, show on scroll-up ---- */
+  const nav = document.getElementById('navbar');
+  const links = document.getElementById('navLinks');
+  if (nav) {
+    let lastY = window.scrollY, ticking = false;
+    function onScroll() {
+      const y = window.scrollY;
+      const menuOpen = links && links.classList.contains('open');
+      if (!menuOpen && y > 320) {
+        if (y > lastY + 6) nav.classList.add('nav-hidden');
+        else if (y < lastY - 6) nav.classList.remove('nav-hidden');
+      } else {
+        nav.classList.remove('nav-hidden');
+      }
+      lastY = y;
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+  }
+})();
