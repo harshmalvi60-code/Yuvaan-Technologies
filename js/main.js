@@ -441,3 +441,28 @@ if (form) {
     }
   });
 })();
+
+/* =================================================================
+   FLOATING CALL + WHATSAPP FAB
+   Injected globally so every page gets it; positioned bottom-right.
+   ================================================================= */
+(function () {
+  if (document.querySelector('.yt-fab')) return;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'yt-fab';
+  wrap.setAttribute('aria-label', 'Quick contact');
+  wrap.innerHTML = '' +
+    '<a class="yt-fab-btn yt-fab-call" href="tel:+918080404314" aria-label="Call 8080404314">' +
+      '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">' +
+        '<path fill="currentColor" d="M19.95 15.46l-3.04-.35a1.5 1.5 0 0 0-1.32.45l-2.2 2.2a14.07 14.07 0 0 1-6.16-6.16l2.21-2.21a1.5 1.5 0 0 0 .44-1.32L9.54 5a1.5 1.5 0 0 0-1.5-1.32H5a1.5 1.5 0 0 0-1.5 1.58 16.5 16.5 0 0 0 15.42 15.42 1.5 1.5 0 0 0 1.58-1.5v-3.04a1.5 1.5 0 0 0-1.32-1.5z"/>' +
+      '</svg>' +
+    '</a>' +
+    '<a class="yt-fab-btn yt-fab-wa" href="https://api.whatsapp.com/send/?phone=918080404314" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">' +
+      '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">' +
+        '<path fill="currentColor" d="M12.04 2A9.97 9.97 0 0 0 2 11.95c0 1.76.46 3.48 1.34 5L2 22l5.21-1.31a10 10 0 0 0 4.83 1.24h.01A9.96 9.96 0 0 0 22 11.95 9.93 9.93 0 0 0 19.07 4.9 9.95 9.95 0 0 0 12.04 2zm0 18.18a8.27 8.27 0 0 1-4.2-1.15l-.3-.18-3.1.79.83-3.02-.2-.31a8.23 8.23 0 1 1 6.97 3.87zm4.74-6.18c-.26-.13-1.53-.75-1.77-.83-.24-.09-.4-.13-.58.13-.18.26-.66.83-.81 1-.15.17-.3.19-.55.06a6.7 6.7 0 0 1-1.97-1.22 7.43 7.43 0 0 1-1.37-1.7c-.14-.25-.02-.39.12-.52.12-.12.26-.31.39-.46.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.06-.13-.58-1.4-.79-1.91-.2-.5-.41-.43-.58-.43h-.5c-.17 0-.45.06-.69.32-.24.26-.91.89-.91 2.17 0 1.28.93 2.52 1.06 2.69.13.18 1.83 2.8 4.43 3.93.62.27 1.1.43 1.48.55.62.2 1.18.17 1.62.1.5-.07 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.11-.24-.18-.5-.31z"/>' +
+      '</svg>' +
+      '<span>WhatsApp</span>' +
+    '</a>';
+  document.body.appendChild(wrap);
+})();
