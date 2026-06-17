@@ -2079,3 +2079,215 @@ body {
 @media (max-width: 560px) {
   .outcome-grid.cols-4 { grid-template-columns: 1fr; }
 }
+
+/* =================================================================
+   PREMIUM ENHANCEMENTS — animation, polish & full responsiveness
+   (layered on top; layout & copy unchanged)
+   ================================================================= */
+:root {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --grad-orange: linear-gradient(135deg, #FF7A4D 0%, #F85026 55%, #E5391A 100%);
+  --glow-orange: 0 14px 40px -10px rgba(248, 80, 38, 0.45);
+  --shadow-soft: 0 18px 50px -22px rgba(17, 17, 17, 0.28);
+}
+
+/* Prevent stray horizontal scroll from glows / floats / transforms */
+html, body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; }
+
+/* Fluid container padding for every device */
+.container {
+  padding-left: clamp(16px, 4vw, 24px);
+  padding-right: clamp(16px, 4vw, 24px);
+}
+
+/* Gentle page-load fade-in */
+body { opacity: 0; animation: pageFade 0.7s var(--ease) forwards; }
+@keyframes pageFade { to { opacity: 1; } }
+
+/* Accessible focus rings */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---- Gradient accent text ---- */
+.accent-italic {
+  background: var(--grad-orange);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---- Animated hero glow ---- */
+.hero-glow {
+  animation: glowPulse 9s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+@keyframes glowPulse {
+  from { opacity: 0.65; transform: scale(1); }
+  to   { opacity: 1;    transform: scale(1.18); }
+}
+
+/* ---- Hero entrance choreography ---- */
+.hero-tag    { animation: heroUp 0.7s var(--ease) both; }
+.hero-heading{ animation: heroUp 0.7s var(--ease) both 0.08s; }
+.hero-sub    { animation: heroUp 0.7s var(--ease) both 0.16s; }
+.hero-cta    { animation: heroUp 0.7s var(--ease) both 0.24s; }
+.hero-stats  { animation: heroUp 0.7s var(--ease) both 0.32s; }
+.hero-right  { animation: heroPop 0.9s var(--ease-out) both 0.28s; }
+.page-hero-inner > *,
+.product-hero .hero-left > * { animation: heroUp 0.7s var(--ease) both; }
+@keyframes heroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes heroPop { from { opacity: 0; transform: translateY(24px) scale(0.96); } to { opacity: 1; transform: none; } }
+
+/* ---- Hero dashboard: draw the chart line on load ---- */
+.chart-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawLine 2.1s var(--ease-out) 0.5s forwards;
+}
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+/* ---- Premium buttons (gradient + shine sweep) ---- */
+.btn-primary, .btn-nav {
+  background-image: var(--grad-orange) !important;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after, .btn-nav::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 80%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s var(--ease);
+}
+.btn-primary:hover::after, .btn-nav:hover::after { left: 130%; }
+.btn-primary:hover { box-shadow: var(--glow-orange); }
+
+/* ---- Animated nav underline (desktop) ---- */
+@media (min-width: 901px) {
+  .nav-links > li > a:not(.btn-nav) { position: relative; }
+  .nav-links > li > a:not(.btn-nav)::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%; bottom: -5px;
+    height: 2px;
+    background: var(--grad-orange);
+    border-radius: 2px;
+    transition: right 0.32s var(--ease);
+  }
+  .nav-links > li > a:not(.btn-nav):hover::after { right: 0; }
+}
+.logo { transition: transform 0.25s var(--ease); display: inline-block; }
+.logo:hover { transform: translateY(-1px) scale(1.03); }
+
+/* ---- Card polish: smoother motion + top accent + icon lift ---- */
+.service-card, .why-card, .case-card, .outcome-tile,
+.testimonial-card, .product-card, .price-card {
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.service-card { position: relative; overflow: hidden; }
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  background: var(--grad-orange);
+  transition: width 0.4s var(--ease);
+}
+.service-card:hover::before { width: 100%; }
+.service-icon { transition: transform 0.4s var(--ease); }
+.service-card:hover .service-icon { transform: translateY(-4px) scale(1.08); }
+.case-card:hover, .outcome-tile:hover, .testimonial-card:hover {
+  border-color: rgba(248, 80, 38, 0.4);
+}
+.testimonial-card {
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+
+/* ---- Process numbers ---- */
+.proc-num { transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.proc-step:hover .proc-num {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(248, 80, 38, 0.45);
+}
+
+/* ---- Marquee pills lift ---- */
+.brand-pill { transition: color 0.25s, border-color 0.25s, transform 0.25s var(--ease), box-shadow 0.25s; }
+.brand-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+
+/* ---- Subtle depth glow inside dark sections ---- */
+.products, .cta-banner { position: relative; }
+.products::before {
+  content: "";
+  position: absolute;
+  top: -120px; right: -100px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(248,80,38,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+.products .container { position: relative; z-index: 1; }
+
+/* ---- Featured price card glow ---- */
+.price-card.featured { box-shadow: 0 24px 60px -18px rgba(248, 80, 38, 0.35); }
+
+/* =========================================================
+   SCROLL REVEAL (driven by js/main.js adding .is-visible)
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* =========================================================
+   EXTRA RESPONSIVE TIERS — small phones & fine-tuning
+   ========================================================= */
+@media (max-width: 480px) {
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-outline { width: 100%; text-align: center; }
+  .hero-stats { gap: 16px; }
+  .stat-num { font-size: 22px; }
+  .cta-buttons { flex-direction: column; }
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-outline { width: 100%; text-align: center; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-brand { grid-column: auto; }
+  .footer-brand p { margin-left: auto; margin-right: auto; }
+  .footer-socials { justify-content: center; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .dash-card { padding: 22px; }
+  .dash-metrics { gap: 10px; }
+}
+
+@media (max-width: 380px) {
+  .container { padding-left: 14px; padding-right: 14px; }
+  .hero-heading { font-size: 31px; letter-spacing: -1px; }
+  .section-title { font-size: 26px; }
+  .dash-metrics { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   REDUCED MOTION — respect user preference
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  body { opacity: 1 !important; }
+  .chart-line { stroke-dashoffset: 0 !important; }
+}

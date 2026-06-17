@@ -68,19 +68,78 @@ if (form) {
   });
 }
 
-// SCROLL REVEAL (lightweight)
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
+// MOTION PREFERENCE
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-document.querySelectorAll('.service-card, .product-card, .why-card, .case-card, .proc-step, .testimonial-card, .feature-tag, .about-left').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
+// SCROLL REVEAL — staggered, class-driven (styles live in CSS .reveal)
+const revealSelector = [
+  '.service-card', '.product-card', '.why-card', '.case-card', '.proc-step',
+  '.testimonial-card', '.feature-tag', '.about-left', '.about-right',
+  '.outcome-tile', '.price-card', '.pillar', '.problem-card',
+  '.section-title', '.section-intro', '.solution-bullets li', '.compare-table'
+].join(', ');
+
+const revealEls = document.querySelectorAll(revealSelector);
+
+if (prefersReduced) {
+  revealEls.forEach(el => el.classList.add('reveal', 'is-visible'));
+} else {
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  // Stagger siblings within the same parent for a smooth cascade
+  const groupCounts = new Map();
+  revealEls.forEach(el => {
+    el.classList.add('reveal');
+    const parent = el.parentElement;
+    const idx = groupCounts.get(parent) || 0;
+    el.style.transitionDelay = Math.min(idx * 70, 350) + 'ms';
+    groupCounts.set(parent, idx + 1);
+    revealObserver.observe(el);
+  });
+}
+
+// COUNT-UP — animates numeric values into view (preserves prefixes/suffixes)
+function animateCount(el) {
+  const text = el.textContent.trim();
+  const match = text.match(/-?\d+(\.\d+)?/);
+  if (!match) return;
+  const numStr = match[0];
+  const end = parseFloat(numStr);
+  const decimals = numStr.includes('.') ? numStr.split('.')[1].length : 0;
+  const prefix = text.slice(0, match.index);
+  const suffix = text.slice(match.index + numStr.length);
+  const duration = 1400;
+  const start = performance.now();
+
+  function frame(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = prefix + (end * eased).toFixed(decimals) + suffix;
+    if (p < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      el.textContent = prefix + numStr + suffix; // restore exact original
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+const countEls = document.querySelectorAll('.stat-num, .cm-num, .dm-value, .df-num, .outcome-metric');
+if (!prefersReduced && countEls.length) {
+  const countObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  countEls.forEach(el => countObserver.observe(el));
+}
