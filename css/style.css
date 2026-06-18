@@ -2239,12 +2239,12 @@ body {
 
 .x-hero-value {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(20px, 2.4vw, 30px);
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 800;
-  letter-spacing: -0.5px;
-  line-height: 1.25;
-  color: var(--orange);
-  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+  line-height: 1.35;
+  color: var(--dark);
+  margin-bottom: 14px;
 }
 
 .x-hero-sub {
