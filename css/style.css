@@ -5134,3 +5134,46 @@ a.footer-contact-value:hover { color: var(--orange); }
 /* Footer social SVG icons */
 .footer-socials a svg { display: block; }
 .footer-socials a { transition: background 0.25s var(--ease), color 0.25s, border-color 0.25s, transform 0.25s var(--ease); }
+
+/* =================================================================
+   FOOTER SOCIALS — brand colors, properly centered
+   ================================================================= */
+.footer-socials { gap: 12px; }
+
+.footer-socials a {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  background: rgba(255,255,255,0.04) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  transition: transform 0.25s var(--ease), background 0.25s, border-color 0.25s, box-shadow 0.25s !important;
+}
+
+.footer-socials a svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease);
+}
+
+/* Real brand colors */
+.footer-socials a[aria-label="Instagram"] svg { color: #E1306C; }
+.footer-socials a[aria-label="LinkedIn"]  svg { color: #0A66C2; }
+.footer-socials a[aria-label="Facebook"]  svg { color: #1877F2; }
+.footer-socials a[aria-label="YouTube"]   svg { width: 22px; height: 22px; color: #FF0033; }
+
+/* Hover: subtle lift + tinted background */
+.footer-socials a:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.08) !important;
+}
+.footer-socials a[aria-label="Instagram"]:hover { box-shadow: 0 8px 22px rgba(225,48,108,0.35); border-color: rgba(225,48,108,0.5) !important; }
+.footer-socials a[aria-label="LinkedIn"]:hover  { box-shadow: 0 8px 22px rgba(10,102,194,0.35);  border-color: rgba(10,102,194,0.5)  !important; }
+.footer-socials a[aria-label="Facebook"]:hover  { box-shadow: 0 8px 22px rgba(24,119,242,0.35);  border-color: rgba(24,119,242,0.5)  !important; }
+.footer-socials a[aria-label="YouTube"]:hover   { box-shadow: 0 8px 22px rgba(255,0,51,0.35);    border-color: rgba(255,0,51,0.5)    !important; }
