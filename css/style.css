@@ -4896,14 +4896,14 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
   color: rgba(255,255,255,0.85);
 }
 
-/* Avatar / icon circle */
+/* Avatar / logo circle */
 .x-fc-avatar {
   position: relative;
   z-index: 1;
   width: 132px;
   height: 132px;
   border-radius: 50%;
-  background: linear-gradient(160deg, #fff 0%, #e8efff 100%);
+  background: #fff;
   border: 3px solid rgba(255,255,255,0.85);
   box-shadow: 0 16px 40px rgba(0,0,0,0.25);
   display: flex;
@@ -4912,14 +4912,30 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
   flex-shrink: 0;
   overflow: hidden;
 }
-.x-fc-avatar svg { display: block; }
-.x-fc-avatar-icon {
-  background: linear-gradient(160deg, #ffd66b 0%, #ffaf2e 100%);
+.x-fc-avatar img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  display: block;
 }
-.x-fc-avatar-icon span {
+.x-fc-v2 .x-fc-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Shangri-La logo is already round */
+}
+/* Graceful fallback if the logo file is missing */
+.x-fc-avatar-fallback {
+  background: linear-gradient(160deg, #fff 0%, #e8efff 100%);
+}
+.x-fc-avatar-fallback::after {
+  content: "P";
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
   font-size: 56px;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
+  color: #1a1f47;
 }
+.x-fc-avatar-fallback-green { background: linear-gradient(160deg, #ffd66b 0%, #ffaf2e 100%); }
+.x-fc-avatar-fallback-green::after { content: "S"; color: #0a4d38; }
 
 /* Body */
 .x-fc-body {
@@ -4982,5 +4998,5 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
   .x-fc-visual { gap: 12px; }
   .x-fc-visual-text { max-width: 56%; }
   .x-fc-avatar { width: 88px; height: 88px; }
-  .x-fc-avatar-icon span { font-size: 42px; }
+  .x-fc-avatar-fallback::after { font-size: 36px; }
 }
