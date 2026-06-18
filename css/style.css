@@ -5006,3 +5006,46 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
   .x-fc-avatar { width: 88px; height: 88px; }
   .x-fc-avatar-fallback::after { font-size: 36px; }
 }
+
+/* =================================================================
+   LOGO — image with text fallback
+   ================================================================= */
+.logo { display: inline-flex; align-items: center; }
+.logo img {
+  display: block;
+  height: 38px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  transition: transform 0.3s var(--ease);
+}
+.logo:hover img { transform: translateY(-1px); }
+
+/* When image is showing, hide the text fallback */
+.logo-img .logo-fallback { display: none; }
+/* When image fails, JS removes .logo-img — the text shows automatically */
+
+.logo-fallback {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+}
+.logo-fallback .logo-dot { color: var(--orange); }
+
+/* Scrolled nav: slightly smaller logo */
+.nav.scrolled .logo img { height: 34px; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  .logo img { height: 32px; max-width: 140px; }
+  .nav.scrolled .logo img { height: 28px; }
+}
+
+/* Footer logo: fallback text must be readable on the dark bg */
+.footer-brand .logo-fallback { color: var(--white); }
+.footer-brand .logo-fallback .logo-dot { color: var(--orange); }
+/* If the brand logo image is dark-only, this could darken in footer.
+   Add an optional filter that the user can opt into by adding .logo-light
+   to the footer logo element. */
