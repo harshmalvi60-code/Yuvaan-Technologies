@@ -713,6 +713,193 @@ body {
 
 .card-link.big { font-size: 15px; display: inline-block; margin-top: 8px; }
 
+/* ---------------------------
+   Services showcase (bento)
+   --------------------------- */
+.section-title .title-accent { color: var(--orange); }
+
+.svc-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.svc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.35s, border-color 0.35s;
+}
+
+/* animated top accent line */
+.svc-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--orange), #ff8a5c);
+  transition: width 0.45s ease;
+}
+.svc-card:hover::before { width: 100%; }
+
+.svc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(248,80,38,0.35);
+}
+
+.svc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.svc-index {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(17,17,17,0.22);
+}
+
+.svc-outcome {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(248,80,38,0.08);
+  padding: 5px 11px;
+  border-radius: 100px;
+}
+
+.svc-icon {
+  width: 52px; height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  background: var(--light-bg);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  margin-bottom: 18px;
+  transition: transform 0.35s, background 0.35s, border-color 0.35s;
+}
+.svc-card:hover .svc-icon {
+  transform: translateY(-2px) rotate(-4deg);
+  background: rgba(248,80,38,0.08);
+  border-color: rgba(248,80,38,0.25);
+}
+
+.svc-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+
+.svc-desc {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.svc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+.svc-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--gray);
+  background: var(--light-bg);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: none;
+}
+.svc-arrow { transition: transform 0.3s; }
+.svc-card:hover .svc-arrow { transform: translateX(5px); }
+
+/* Flagship card */
+.svc-card--flagship { grid-column: span 2; }
+.svc-card--flagship::before { width: 100%; }
+.svc-card--flagship::after {
+  content: "";
+  position: absolute;
+  top: -45%; right: -8%;
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(248,80,38,0.16), transparent 65%);
+  pointer-events: none;
+}
+.svc-card--flagship .svc-icon {
+  width: 60px; height: 60px;
+  font-size: 30px;
+}
+.svc-card--flagship .svc-title {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+.svc-card--flagship .svc-desc {
+  font-size: 15.5px;
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+/* CTA tile */
+.svc-card--cta {
+  align-items: flex-start;
+  justify-content: center;
+  background: linear-gradient(155deg, rgba(248,80,38,0.07), rgba(248,80,38,0.015));
+  border: 1px dashed rgba(248,80,38,0.45);
+}
+.svc-card--cta::before { display: none; }
+.svc-card--cta .svc-outcome {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.svc-card--cta .svc-title {
+  font-size: 21px;
+  margin-bottom: 16px;
+}
+.svc-card--cta .svc-link { margin-top: 0; }
+
+@media (max-width: 920px) {
+  .svc-showcase { grid-template-columns: repeat(2, 1fr); }
+  .svc-card--flagship { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .svc-showcase { grid-template-columns: 1fr; gap: 16px; }
+  .svc-card--flagship { grid-column: span 1; }
+  .svc-card--flagship .svc-title { font-size: 23px; }
+}
+
 /* ===========================
    SECTION 4 — PRODUCTS
    =========================== */
