@@ -5130,3 +5130,7 @@ a.footer-contact-value:hover { color: var(--orange); }
   .footer-legal { gap: 14px; flex-wrap: wrap; justify-content: center; }
   .footer-bottom { text-align: center; }
 }
+
+/* Footer social SVG icons */
+.footer-socials a svg { display: block; }
+.footer-socials a { transition: background 0.25s var(--ease), color 0.25s, border-color 0.25s, transform 0.25s var(--ease); }
