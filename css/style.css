@@ -5053,3 +5053,80 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
 /* If the brand logo image is dark-only, this could darken in footer.
    Add an optional filter that the user can opt into by adding .logo-light
    to the footer logo element. */
+
+/* =================================================================
+   FOOTER — 5-column layout with contact block
+   ================================================================= */
+.footer-grid {
+  grid-template-columns: 1.6fr 1fr 1fr 0.9fr 1.4fr !important;
+  gap: 36px !important;
+}
+
+/* Footer logo: drop the larger sizing — keep it tight in the column */
+.footer-brand .logo img { height: 48px; max-width: 200px; }
+
+.footer-brand p {
+  max-width: 280px;
+}
+
+/* Contact column */
+.footer-contact { display: flex; flex-direction: column; gap: 16px; }
+.footer-contact h5 { margin-bottom: 4px; }
+
+.footer-contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.footer-contact-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.footer-contact-value {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.55;
+  text-decoration: none;
+  margin-bottom: 0 !important;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+a.footer-contact-value:hover { color: var(--orange); }
+
+.footer-contact-gst {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--orange);
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Bottom row: legal links use proper spacing */
+.footer-legal { gap: 22px; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr !important;
+    row-gap: 40px !important;
+  }
+  .footer-brand { grid-column: 1 / -1; max-width: 540px; }
+}
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 30px !important; }
+  .footer-brand { grid-column: 1 / -1; max-width: none; }
+  .footer-contact { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+  .footer-brand { grid-column: auto; }
+  .footer-contact { grid-column: auto; }
+  .footer-legal { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .footer-bottom { text-align: center; }
+}
