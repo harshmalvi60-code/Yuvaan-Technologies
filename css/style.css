@@ -4344,19 +4344,25 @@ body { animation: ytPageIn 0.5s ease both; }
 
 /* Mobile accordion nav: stack the CTAs full-width */
 @media (max-width: 900px) {
-  .nav-cta-group {
+  .nav-links > li.nav-cta-group {
     display: flex !important;
     flex-direction: row;
     gap: 10px;
-    padding: 12px 4px;
+    padding: 14px 4px 4px;
     border-bottom: none !important;
   }
-  .nav-cta {
+  .nav-links > li.nav-cta-group > .nav-cta {
+    display: inline-flex !important;
     flex: 1;
-    justify-content: center;
-    padding: 12px 14px;
+    align-items: center;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 14px 14px !important;
     font-size: 14px !important;
+    border-radius: 12px !important;
   }
+  .nav-links > li.nav-cta-group > .nav-cta svg { flex-shrink: 0; }
+  .nav-links > li.nav-cta-group > .nav-cta span { letter-spacing: 0.2px; }
 }
 
 /* =================================================================
