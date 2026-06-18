@@ -4571,7 +4571,7 @@ img[loading="lazy"] { animation: ytImgIn 1s var(--ease) 0.4s forwards; }
 /* ---- Auto-hide nav on scroll-down, reveal on scroll-up ---- */
 .nav { transition: transform 0.4s var(--ease), background 0.3s ease,
                    padding 0.3s ease, box-shadow 0.3s ease; }
-.nav.nav-hidden { transform: translateY(-100%); }
+.nav.nav-hidden { transform: none; }
 
 /* ---- Logo dot gentle pulse ---- */
 @keyframes ytLogoPulse {

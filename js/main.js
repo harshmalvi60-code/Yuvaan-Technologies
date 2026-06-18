@@ -551,25 +551,5 @@ if (form) {
     });
   }
 
-  /* ---- Auto-hide nav on scroll-down, show on scroll-up ---- */
-  const nav = document.getElementById('navbar');
-  const links = document.getElementById('navLinks');
-  if (nav) {
-    let lastY = window.scrollY, ticking = false;
-    function onScroll() {
-      const y = window.scrollY;
-      const menuOpen = links && links.classList.contains('open');
-      if (!menuOpen && y > 320) {
-        if (y > lastY + 6) nav.classList.add('nav-hidden');
-        else if (y < lastY - 6) nav.classList.remove('nav-hidden');
-      } else {
-        nav.classList.remove('nav-hidden');
-      }
-      lastY = y;
-      ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
-    }, { passive: true });
-  }
+  /* Header is sticky — always visible (auto-hide removed by request) */
 })();
