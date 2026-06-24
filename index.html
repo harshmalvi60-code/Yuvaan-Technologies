@@ -6,61 +6,47 @@
   <title>Yuvaan Technologies — Build Smarter. Scale Faster.</title>
   <meta name="description" content="Yuvaan Technologies helps D2C brands, SaaS products, and hospitality businesses grow with AI-powered marketing, tech execution, and conversion-focused strategies."/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style.css?v=202606241314"/>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav" id="navbar">
     <div class="container nav-inner">
-      <a href="#" class="logo">Yuvaan<span>.</span></a>
+      <a href="#home" class="logo logo-img" aria-label="Yuvaan Technologies"><img src="images/logo.png" alt="Yuvaan Technologies" onerror="this.style.display='none';this.parentNode.classList.remove('logo-img');"/><span class="logo-fallback">Yuvaan<span class="logo-dot">.</span></span></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
 
         <li class="has-dropdown">
           <a href="#services" class="dropdown-toggle">Services<span class="caret" aria-hidden="true"></span></a>
           <div class="dropdown-menu">
-            <a href="#services">Performance Marketing</a>
-            <a href="#services">Website Development</a>
-            <a href="#services">AI &amp; Automation</a>
-            <a href="#services">Creative &amp; Branding</a>
-            <a href="#services">Video Production &amp; UGC</a>
-            <a href="#services">SEO &amp; Automation</a>
+            <a href="performance-marketing.html">Performance Marketing</a>
+            <a href="website-development.html">Website Development</a>
+            <a href="ai-automation.html">AI &amp; Automation</a>
+            <a href="video-production-ugc.html">Video Production &amp; UGC</a>
           </div>
         </li>
 
         <li class="has-dropdown">
           <a href="products.html" class="dropdown-toggle">Products<span class="caret" aria-hidden="true"></span></a>
           <div class="dropdown-menu">
-            <a href="products.html">
+            <a href="https://yuvaantechnologies.com/storyscale-ai/">
               <span class="dd-title">StoryScale AI <span class="dd-badge">NEW</span></span>
               <span class="dd-desc">AI Content Engine</span>
             </a>
-            <a href="products.html">
+            <a href="https://yuvaantechnologies.com/sitesprint/">
               <span class="dd-title">SiteSprint AI <span class="dd-badge">NEW</span></span>
               <span class="dd-desc">Website in 24–72 Hours</span>
             </a>
-            <a href="products.html">
+            <a href="https://yuvaantechnologies.com/rto-fixer/">
               <span class="dd-title">RTO Reduction Engine</span>
               <span class="dd-desc">E-Commerce Tool</span>
             </a>
           </div>
         </li>
 
-        <li class="has-dropdown">
-          <a href="#industry" class="dropdown-toggle">Industry<span class="caret" aria-hidden="true"></span></a>
-          <div class="dropdown-menu">
-            <a href="#industry">Ecommerce</a>
-            <a href="#industry">Hospitality</a>
-            <a href="#industry">Education</a>
-            <a href="#industry">SaaS</a>
-          </div>
-        </li>
-
-        <li><a href="#case-studies">Case Studies</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact" class="btn-nav">Contact</a></li>
+        <li><a href="https://yuvaantechnologies.com/case-study/">Case Studies</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -68,450 +54,348 @@
     </div>
   </nav>
 
-  <!-- SECTION 1 — HERO -->
-  <section class="hero" id="home">
-    <div class="container hero-grid">
-      <div class="hero-left">
-        <div class="hero-tag">Website · Ads · Branding · More</div>
-        <h1 class="hero-heading">We Build Brands That<br/><span class="accent-italic">Scale Online.</span></h1>
-        <p class="hero-sub">Yuvaan Technologies helps D2C brands, hotels, and SaaS companies grow through performance marketing, AI-powered systems, and conversion-first digital execution — engineered to compound.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn-primary">Book Strategy Call</a>
-          <a href="#case-studies" class="btn-outline">View Case Studies</a>
+  <!-- ============ HERO ============ -->
+  <section class="x-hero" id="home">
+    <div class="x-hero-bgword" aria-hidden="true">GROWTH</div>
+    <div class="x-orb x-orb-1" aria-hidden="true"></div>
+    <div class="x-orb x-orb-2" aria-hidden="true"></div>
+
+    <div class="container x-hero-inner">
+      <div class="x-hero-left">
+        <div class="x-eyebrow reveal"><span class="x-eyebrow-dot"></span> AI-Driven Growth Systems · 100+ Brands Scaled</div>
+        <h1 class="x-hero-title">
+          <span class="x-line reveal">We Build Brands</span>
+          <span class="x-line reveal">That <span class="accent-italic">Scale Online.</span></span>
+        </h1>
+        <p class="x-hero-value reveal">Websites. Ads. Branding. Videos. Growth Systems.</p>
+        <p class="x-hero-sub reveal">Helping modern businesses scale using storytelling, performance marketing, and technology-driven digital systems — engineered to compound.</p>
+        <div class="x-hero-cta reveal">
+          <a href="https://yuvaantechnologies.com/request-a-callback/" class="btn-primary magnetic">Book Strategy Call →</a>
+          <a href="https://yuvaantechnologies.com/case-study/" class="btn-outline">View Case Studies</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Brands</span></div>
-          <div class="stat-divider"></div>
-          <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Years</span></div>
-          <div class="stat-divider"></div>
-          <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Team Members</span></div>
-          <div class="stat-divider"></div>
-          <div class="stat"><span class="stat-num">4.98/5</span><span class="stat-label">Rating</span></div>
+
+        <div class="x-hero-meta reveal">
+          <div class="x-meta"><span class="x-meta-num" data-count="800" data-suffix="+">0</span><span class="x-meta-label">Brands Scaled</span></div>
+          <div class="x-meta"><span class="x-meta-num" data-count="8" data-suffix="+">0</span><span class="x-meta-label">Years Building</span></div>
+          <div class="x-meta"><span class="x-meta-num" data-count="4.98" data-decimals="2">0</span><span class="x-meta-label">Average Client Rating</span></div>
         </div>
       </div>
 
-      <div class="hero-right">
-        <div class="dash-card">
-          <div class="dash-top">
-            <div class="dash-title">
-              <span class="dash-dot"></span>
-              Growth Overview
-            </div>
-            <div class="dash-period">Last 30 days</div>
-          </div>
-
-          <div class="dash-metrics">
-            <div class="dash-metric">
-              <span class="dm-label">ROAS</span>
-              <span class="dm-value">5.8x</span>
-              <span class="dm-trend up">▲ 38%</span>
-            </div>
-            <div class="dash-metric">
-              <span class="dm-label">Revenue</span>
-              <span class="dm-value">₹42.6L</span>
-              <span class="dm-trend up">▲ Revenue ↑</span>
-            </div>
-          </div>
-
-          <div class="dash-chart">
-            <svg viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F85026" stop-opacity="0.28"/>
-                  <stop offset="100%" stop-color="#F85026" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <polyline class="chart-area" points="0,95 40,82 80,88 120,60 160,66 200,40 240,46 280,22 320,12 320,120 0,120"/>
-              <polyline class="chart-line" points="0,95 40,82 80,88 120,60 160,66 200,40 240,46 280,22 320,12"/>
-              <circle class="chart-pulse" cx="320" cy="12" r="4"/>
-            </svg>
-            <div class="chart-grid"><span></span><span></span><span></span></div>
-          </div>
-
-          <div class="dash-foot">
-            <div class="df-item"><span class="df-num">12.4%</span><span class="df-label">Conv. Rate</span></div>
-            <div class="df-item"><span class="df-num">2.1x</span><span class="df-label">LTV / CAC</span></div>
-            <div class="df-item"><span class="df-num">68%</span><span class="df-label">Retention</span></div>
-          </div>
-        </div>
+      <div class="x-hero-right reveal">
+        <button class="x-video x-tilt" type="button" data-video="csNAZ_7sLao" aria-label="Play Yuvaan Technologies video">
+          <img class="x-video-thumb"
+               src="https://i.ytimg.com/vi/csNAZ_7sLao/maxresdefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/csNAZ_7sLao/hqdefault.jpg';"
+               alt="Yuvaan Technologies — watch our story" loading="lazy" width="1280" height="720" />
+          <span class="x-video-shade" aria-hidden="true"></span>
+          <span class="x-video-play" aria-hidden="true"><span class="x-video-tri"></span></span>
+          <span class="x-video-label"><span class="x-video-dot"></span> Watch our story</span>
+        </button>
         <div class="dash-float dash-float-1">⚡ Conversions ↑ 24%</div>
         <div class="dash-float dash-float-2">🎯 CAC ↓ 31%</div>
       </div>
     </div>
-    <div class="hero-glow"></div>
+
+    <a href="#marquee" class="x-scroll-cue" aria-label="Scroll down">
+      <span class="x-scroll-line"></span>
+      <span class="x-scroll-text">Scroll</span>
+    </a>
   </section>
 
-  <!-- SECTION 2 — MARQUEE CLIENT LOGOS -->
-  <section class="marquee-section">
-    <div class="container">
-      <div class="section-label center">Brands We've Worked With</div>
-    </div>
-    <div class="marquee">
+  <!-- ============ MARQUEE ============ -->
+  <section class="x-ticker" id="marquee">
+    <div class="container"><div class="section-label center">Featured Clients</div></div>
+    <div class="marquee x-brand-marquee">
       <div class="marquee-track">
-        <span class="brand-pill">The Studio Ragu</span>
-        <span class="brand-pill">SilverRish Jewelry</span>
-        <span class="brand-pill">Autoclave Hero</span>
-        <span class="brand-pill">Fluffy Munschins</span>
-        <span class="brand-pill">Gadget Destiny</span>
-        <span class="brand-pill">Strong Rual</span>
-        <span class="brand-pill">Pure Noisse</span>
+        <span class="x-brand">Phylaxis.ai</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Natchero</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Shangrila</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">The Fluffy Munchkin</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Gadget Destiny</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Dhruv Enclave</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Pocomico</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Silverich</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Fenso Fashion</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Strong Soul</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">NR Skins</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Darzata</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">FitClo</span><span class="x-brand-sep" aria-hidden="true">●</span>
         <!-- duplicate for seamless loop -->
-        <span class="brand-pill">The Studio Ragu</span>
-        <span class="brand-pill">SilverRish Jewelry</span>
-        <span class="brand-pill">Autoclave Hero</span>
-        <span class="brand-pill">Fluffy Munschins</span>
-        <span class="brand-pill">Gadget Destiny</span>
-        <span class="brand-pill">Strong Rual</span>
-        <span class="brand-pill">Pure Noisse</span>
+        <span class="x-brand">Phylaxis.ai</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Natchero</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Shangrila</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">The Fluffy Munchkin</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Gadget Destiny</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Dhruv Enclave</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Pocomico</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Silverich</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Fenso Fashion</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Strong Soul</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">NR Skins</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">Darzata</span><span class="x-brand-sep" aria-hidden="true">●</span>
+        <span class="x-brand">FitClo</span><span class="x-brand-sep" aria-hidden="true">●</span>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3 — SERVICES -->
-  <section class="section services" id="services">
+  <!-- ============ SERVICES — EQUAL GRID ============ -->
+  <section class="x-services" id="services">
     <div class="container">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Everything modern brands<br/>need to grow online.</h2>
-      <p class="section-intro">From ads to automation — we cover every growth lever, built for scalable, long-term propositions.</p>
-      <div class="services-grid">
+      <div class="x-svc-head reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="x-h2">Every growth lever,<br/><span class="accent-italic">built into one system.</span></h2>
+        <p class="x-svc-intro">Six focused services — engineered to ship outcomes, not just deliverables.</p>
+      </div>
 
-        <div class="service-card">
-          <div class="service-icon">💻</div>
+      <div class="x-svc-grid">
+        <article class="x-card reveal">
+          <div class="x-card-ic">💻</div>
           <h3>Website Development</h3>
-          <p>High-converting, lightning-fast sites engineered for trust, speed, and sales — not just looks.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
+          <p>Conversion-first Shopify and custom builds that load fast and sell harder.</p>
+          <a href="website-development.html" class="x-card-btn">Learn More <span aria-hidden="true">→</span></a>
+        </article>
 
-        <div class="service-card">
-          <div class="service-icon">📈</div>
+        <article class="x-card reveal">
+          <div class="x-card-ic">📈</div>
           <h3>Performance Marketing</h3>
-          <p>Meta &amp; Google ad systems that turn spend into predictable, profitable revenue at scale.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
+          <p>Meta &amp; Google ad systems that turn spend into predictable revenue.</p>
+          <a href="performance-marketing.html" class="x-card-btn">Learn More <span aria-hidden="true">→</span></a>
+        </article>
 
-        <div class="service-card">
-          <div class="service-icon">🎨</div>
-          <h3>Branding &amp; Creative</h3>
-          <p>Distinct brand identities and scroll-stopping creative that make you impossible to ignore.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
+        <article class="x-card reveal">
+          <div class="x-card-ic">🎬</div>
+          <h3>Video &amp; UGC</h3>
+          <p>Native-format UGC, reels, and ads built to convert across every channel.</p>
+          <a href="video-production-ugc.html" class="x-card-btn">Learn More <span aria-hidden="true">→</span></a>
+        </article>
 
-        <div class="service-card">
-          <div class="service-icon">🎬</div>
-          <h3>Video Production &amp; UGC</h3>
-          <p>Thumb-stopping UGC and brand films built to convert across every paid and organic channel.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">📱</div>
-          <h3>Social Media Management</h3>
-          <p>Always-on content and community building that compounds your brand presence month over month.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <h3>SEO &amp; Automation</h3>
-          <p>Rank, capture, and nurture on autopilot with AI-driven SEO and marketing automation systems.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🛒</div>
-          <h3>E-commerce Growth Systems</h3>
-          <p>End-to-end D2C infrastructure — from store build to retention — designed to scale revenue fast.</p>
-          <a href="#contact" class="card-link">Explore More →</a>
-        </div>
-
+        <article class="x-card reveal">
+          <div class="x-card-ic">🤖</div>
+          <h3>AI &amp; Automation</h3>
+          <p>WhatsApp, CRM, and AI workflows that capture and convert 24/7.</p>
+          <a href="ai-automation.html" class="x-card-btn">Learn More <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 4 — PRODUCTS -->
-  <section class="section products" id="products">
+  <!-- ============ PRODUCTS — EQUAL GRID ============ -->
+  <section class="x-products" id="products">
+    <div class="x-products-glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="section-label">Our Products</div>
-      <h2 class="section-title light">Productized growth.<br/>Built for serious operators.</h2>
-      <p class="section-intro light">These are not just services — they are systems. Pre-built. Battle-tested. Working every day.</p>
-      <div class="products-grid">
+      <div class="x-prod-head reveal">
+        <div class="section-label">Our Products</div>
+        <h2 class="x-h2 light">Productized growth.<br/><span class="accent-italic">Built for serious operators.</span></h2>
+        <p class="x-prod-intro">Four standalone systems. Each one ships outcomes from day one.</p>
+      </div>
 
-        <div class="product-card">
-          <div class="product-badge">NEW</div>
-          <h3>SiteSprint</h3>
-          <div class="product-tagline">Website in 24–72 Hours</div>
-          <p>A productized website engine that ships conversion-ready, on-brand sites in days — not months. Built to launch fast and sell from day one.</p>
-          <a href="products.html" class="btn-product">Explore SiteSprint →</a>
-        </div>
+      <div class="x-prod-grid">
+        <article class="x-prod reveal">
+          <div class="x-prod-top">
+            <span class="x-prod-tag">AI Content Engine</span>
+            <span class="x-prod-num">01</span>
+          </div>
+          <h3>StoryScale AI</h3>
+          <p>Turn one brand story into 100 conversion-ready ad and content variants.</p>
+          <a href="https://yuvaantechnologies.com/storyscale-ai/" class="x-prod-cta">Explore <span aria-hidden="true">→</span></a>
+        </article>
 
-        <div class="product-card">
-          <h3>RTO Flow™</h3>
-          <div class="product-tagline">RTO Reduction Engine for D2C</div>
-          <p>Cut return-to-origin losses with automated address intelligence, COD verification, and risk scoring — protecting margin on every order you ship.</p>
-          <a href="products.html" class="btn-product">Explore RTO Flow →</a>
-        </div>
+        <article class="x-prod reveal">
+          <div class="x-prod-top">
+            <span class="x-prod-tag">Web in 24–72 Hours</span>
+            <span class="x-prod-num">02</span>
+          </div>
+          <h3>SiteSprint AI</h3>
+          <p>Productized store and landing-page engine that ships live, on-brand sites in days.</p>
+          <a href="https://yuvaantechnologies.com/sitesprint/" class="x-prod-cta">Explore <span aria-hidden="true">→</span></a>
+        </article>
 
-        <div class="product-card">
-          <h3>Dropshipping Growth Program</h3>
-          <div class="product-tagline">Launch &amp; Scale, Done-With-You</div>
-          <p>A complete playbook and execution system to find winners, build stores, and scale paid acquisition — without burning cash on guesswork.</p>
-          <a href="products.html" class="btn-product">Explore Program →</a>
-        </div>
+        <article class="x-prod reveal">
+          <div class="x-prod-top">
+            <span class="x-prod-tag">E-Commerce Tool</span>
+            <span class="x-prod-num">03</span>
+          </div>
+          <h3>RTO Fixer</h3>
+          <p>Cut return-to-origin losses with address scoring, COD verification, and risk filters.</p>
+          <a href="https://yuvaantechnologies.com/rto-fixer/" class="x-prod-cta">Explore <span aria-hidden="true">→</span></a>
+        </article>
 
+        <article class="x-prod reveal">
+          <div class="x-prod-top">
+            <span class="x-prod-tag">Growth Program</span>
+            <span class="x-prod-num">04</span>
+          </div>
+          <h3>Dropshipping Growth System</h3>
+          <p>A done-with-you playbook to find winners, build stores, and scale paid acquisition.</p>
+          <a href="tel:+918080404314" class="x-prod-cta x-prod-cta-call">
+            <span class="x-prod-call-ic" aria-hidden="true">📞</span>
+            Call Now · +91 80804 04314
+          </a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 5 — WHY US -->
-  <section class="section why" id="why">
-    <div class="container">
-      <div class="section-label">Why Yuvaan</div>
-      <h2 class="section-title">The agency that outgrew<br/>being an agency.</h2>
-      <p class="section-intro">We don't just advise — we build, execute, and stay accountable for results, every single day.</p>
-      <div class="why-grid">
+  <!-- ============ STATEMENT MARQUEE ============ -->
+  <section class="x-statement" aria-label="Mission statement">
+    <div class="marquee x-stmt-marquee">
+      <div class="marquee-track">
+        <span class="x-stmt-item">We don't just build websites or run ads. We build <span class="accent-italic">growth ecosystems</span> — marketing, technology, branding, and AI automation, engineered into one system that compounds for years.</span>
+        <span class="x-stmt-sep" aria-hidden="true">✦</span>
+        <span class="x-stmt-item">We don't just build websites or run ads. We build <span class="accent-italic">growth ecosystems</span> — marketing, technology, branding, and AI automation, engineered into one system that compounds for years.</span>
+        <span class="x-stmt-sep" aria-hidden="true">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span class="x-stmt-item">We don't just build websites or run ads. We build <span class="accent-italic">growth ecosystems</span> — marketing, technology, branding, and AI automation, engineered into one system that compounds for years.</span>
+        <span class="x-stmt-sep" aria-hidden="true">✦</span>
+        <span class="x-stmt-item">We don't just build websites or run ads. We build <span class="accent-italic">growth ecosystems</span> — marketing, technology, branding, and AI automation, engineered into one system that compounds for years.</span>
+        <span class="x-stmt-sep" aria-hidden="true">✦</span>
+      </div>
+    </div>
+  </section>
 
-        <div class="why-card">
+  <!-- ============ CASE STUDIES — FEATURED ============ -->
+  <section class="x-fc">
+    <div class="container">
+      <div class="x-fc-head reveal">
+        <div class="section-label">Featured Case Studies</div>
+        <h2 class="x-h2">Real brands.<br/><span class="accent-italic">Real outcomes.</span></h2>
+      </div>
+
+      <div class="x-fc-grid">
+        <article class="x-fc-card reveal">
+          <div class="x-fc-visual x-fc-v1">
+            <div class="x-fc-visual-text">
+              <span class="x-fc-brand">phylaxis.ai</span>
+              <strong>Improving Healthcare Access:<br/>Driving <em>Early Detection</em><br/>Awareness in India</strong>
+            </div>
+            <div class="x-fc-avatar" aria-hidden="true">
+              <img src="images/phylaxis-logo.png" alt="Phylaxis.ai"
+                   onerror="this.style.display='none';this.parentNode.classList.add('x-fc-avatar-fallback');"/>
+            </div>
+          </div>
+          <div class="x-fc-body">
+            <h3>Improving Healthcare Access: Driving Early Detection Awareness in India</h3>
+            <p>Elevated early detection awareness across India through impactful video storytelling, regional PR outreach, and data-driven campaigns — driving real change in healthcare access.</p>
+            <a href="https://yuvaantechnologies.com/case-study/" class="x-fc-btn">Read Full</a>
+          </div>
+        </article>
+
+        <article class="x-fc-card reveal">
+          <div class="x-fc-visual x-fc-v2">
+            <div class="x-fc-visual-text">
+              <strong>Shangri-La<br/>Restaurants</strong>
+              <span class="x-fc-metric">Boosts Revenue by <em>65%</em></span>
+              <span class="x-fc-tag">With Multi-Channel Marketing</span>
+            </div>
+            <div class="x-fc-avatar" aria-hidden="true">
+              <img src="images/shangri-la-logo.png" alt="Shangri-La Kamalbaug"
+                   onerror="this.style.display='none';this.parentNode.classList.add('x-fc-avatar-fallback','x-fc-avatar-fallback-green');"/>
+            </div>
+          </div>
+          <div class="x-fc-body">
+            <h3>Shangri-La Restaurant Boost Revenue by <span class="accent-italic">65%</span> With Video Marketing</h3>
+            <p>With the power of video marketing and targeted Facebook Ads, Shangri-La Restaurant saw a 65% boost in revenue and a surge in customer engagement.</p>
+            <a href="https://yuvaantechnologies.com/case-study/" class="x-fc-btn">Read Full</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="x-fc-cta reveal">
+        <a href="https://yuvaantechnologies.com/case-study/" class="btn-primary">View All Case Studies →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY — COMPACT GRID ============ -->
+  <section class="x-why2">
+    <div class="container">
+      <div class="x-why2-head reveal">
+        <div class="section-label">Why Yuvaan</div>
+        <h2 class="x-h2">The agency that<br/><span class="accent-italic">outgrew being one.</span></h2>
+      </div>
+      <div class="x-why2-grid">
+        <article class="x-why2-card reveal">
+          <span class="x-why2-no">01</span>
           <h4>Growth-Focused Strategy</h4>
-          <p>Every decision laddered to one metric that matters: profitable, compounding growth.</p>
-        </div>
-        <div class="why-card">
+          <p>Every decision laddered to profitable, compounding growth.</p>
+        </article>
+        <article class="x-why2-card reveal">
+          <span class="x-why2-no">02</span>
           <h4>Creative + Tech Combined</h4>
-          <p>Designers and engineers in one room — so brand and performance never fight each other.</p>
-        </div>
-        <div class="why-card">
-          <h4>Storytelling-driven Marketing</h4>
-          <p>Narratives that build demand, not just ads that chase it — so your brand earns attention.</p>
-        </div>
-        <div class="why-card">
+          <p>Designers and engineers in one room — brand and performance aligned.</p>
+        </article>
+        <article class="x-why2-card reveal">
+          <span class="x-why2-no">03</span>
+          <h4>Storytelling-Driven Marketing</h4>
+          <p>Narratives that build demand, not just ads that chase it.</p>
+        </article>
+        <article class="x-why2-card reveal">
+          <span class="x-why2-no">04</span>
           <h4>Performance-Obsessed</h4>
-          <p>We live in the dashboards. If it doesn't move revenue, it doesn't make the cut.</p>
-        </div>
-        <div class="why-card">
-          <h4>Founder-led Fast Support</h4>
-          <p>Direct access, fast replies, real ownership — you're never lost in an account queue.</p>
-        </div>
-        <div class="why-card">
-          <h4>Long-term Scaling Mindset</h4>
-          <p>We build systems that outlast campaigns — engineered to keep paying off for years.</p>
-        </div>
-
+          <p>We live in the dashboards. No revenue, no cut.</p>
+        </article>
+        <article class="x-why2-card reveal">
+          <span class="x-why2-no">05</span>
+          <h4>Founder-Led Fast Support</h4>
+          <p>Direct access, fast replies, real ownership.</p>
+        </article>
+        <article class="x-why2-card reveal">
+          <span class="x-why2-no">06</span>
+          <h4>Long-Term Scaling Mindset</h4>
+          <p>Systems that outlast campaigns and keep paying off.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 6 — CASE STUDIES -->
-  <section class="section case-studies" id="case-studies">
+  <!-- ============ PROCESS — COMPACT HORIZONTAL STEPS ============ -->
+  <section class="x-process2" id="process">
     <div class="container">
-      <div class="section-label">Real Results</div>
-      <h2 class="section-title">Real brands. Real revenue.<br/>Real growth.</h2>
-      <p class="section-intro">The proof is in the numbers — and the brands that trust us to build their systems.</p>
-      <div class="case-grid">
-
-        <div class="case-card">
-          <div class="case-top">
-            <h3>The Studio Ragu</h3>
-            <span class="case-tag">Home &amp; Decor</span>
-          </div>
-          <div class="case-metrics">
-            <div class="cm"><span class="cm-num">3.2x</span><span class="cm-label">ROAS</span></div>
-            <div class="cm"><span class="cm-num">60</span><span class="cm-label">Days</span></div>
-            <div class="cm"><span class="cm-num">5x</span><span class="cm-label">Scale</span></div>
-          </div>
-          <a href="#contact" class="case-link">View Full Study →</a>
-        </div>
-
-        <div class="case-card">
-          <div class="case-top">
-            <h3>SilverRish Jewelry</h3>
-            <span class="case-tag">Jewelry</span>
-          </div>
-          <div class="case-metrics">
-            <div class="cm"><span class="cm-num">4.6x</span><span class="cm-label">ROAS</span></div>
-            <div class="cm"><span class="cm-num">90</span><span class="cm-label">Days</span></div>
-            <div class="cm"><span class="cm-num">3x</span><span class="cm-label">AOV</span></div>
-          </div>
-          <a href="#contact" class="case-link">View Full Study →</a>
-        </div>
-
-        <div class="case-card">
-          <div class="case-top">
-            <h3>Autoclave Hero</h3>
-            <span class="case-tag">B2B Equipment</span>
-          </div>
-          <div class="case-metrics">
-            <div class="cm"><span class="cm-num">7x</span><span class="cm-label">Leads</span></div>
-            <div class="cm"><span class="cm-num">45</span><span class="cm-label">Days</span></div>
-            <div class="cm"><span class="cm-num">52%</span><span class="cm-label">CAC ↓</span></div>
-          </div>
-          <a href="#contact" class="case-link">View Full Study →</a>
-        </div>
-
-        <div class="case-card">
-          <div class="case-top">
-            <h3>Fluffy Munschins</h3>
-            <span class="case-tag">Pet Care</span>
-          </div>
-          <div class="case-metrics">
-            <div class="cm"><span class="cm-num">5.8x</span><span class="cm-label">ROAS</span></div>
-            <div class="cm"><span class="cm-num">75</span><span class="cm-label">Days</span></div>
-            <div class="cm"><span class="cm-num">4x</span><span class="cm-label">Scale</span></div>
-          </div>
-          <a href="#contact" class="case-link">View Full Study →</a>
-        </div>
-
-        <div class="case-card">
-          <div class="case-top">
-            <h3>Gadget Destiny</h3>
-            <span class="case-tag">Electronics</span>
-          </div>
-          <div class="case-metrics">
-            <div class="cm"><span class="cm-num">3.9x</span><span class="cm-label">ROAS</span></div>
-            <div class="cm"><span class="cm-num">30</span><span class="cm-label">Days</span></div>
-            <div class="cm"><span class="cm-num">2.4x</span><span class="cm-label">Revenue</span></div>
-          </div>
-          <a href="#contact" class="case-link">View Full Study →</a>
-        </div>
-
-        <div class="case-card">
-          <div class="case-top">
-            <h3>Strong Rual</h3>
-            <span class="case-tag">Fitness</span>
-          </div>
-          <div class="case-metrics">
-            <div class="cm"><span class="cm-num">6.1x</span><span class="cm-label">ROAS</span></div>
-            <div class="cm"><span class="cm-num">50</span><span class="cm-label">Days</span></div>
-            <div class="cm"><span class="cm-num">5x</span><span class="cm-label">Scale</span></div>
-          </div>
-          <a href="#contact" class="case-link">View Full Study →</a>
-        </div>
-
+      <div class="x-process2-head reveal">
+        <div class="section-label">How We Work</div>
+        <h2 class="x-h2">A clear path from<br/><span class="accent-italic">first call to scale.</span></h2>
       </div>
-      <div class="case-cta">
-        <a href="#contact" class="btn-primary">See All Case Studies →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 7 — PROCESS -->
-  <section class="section process-section" id="process">
-    <div class="container">
-      <div class="section-label">How We Work</div>
-      <div class="process-row">
-        <div class="process-line"></div>
-
-        <div class="proc-step">
-          <div class="proc-num">1</div>
+      <div class="x-process2-grid">
+        <article class="x-step reveal">
+          <div class="x-step-no">01</div>
           <h4>Discovery Call</h4>
-          <p>We dig into your goals, numbers, and bottlenecks to find the real growth levers.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-num">2</div>
+          <p>Goals, numbers, and bottlenecks — mapped to the real growth levers.</p>
+        </article>
+        <article class="x-step reveal">
+          <div class="x-step-no">02</div>
           <h4>Growth Strategy</h4>
-          <p>A focused, no-fluff roadmap built around the highest-leverage moves for your brand.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-num">3</div>
-          <h4>Creative + Tech Execution</h4>
-          <p>We build it all — sites, ads, content, automations — fast and to spec.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-num">4</div>
+          <p>A no-fluff roadmap built around your highest-leverage moves.</p>
+        </article>
+        <article class="x-step reveal">
+          <div class="x-step-no">03</div>
+          <h4>Creative + Tech</h4>
+          <p>Sites, ads, content, and automations — built fast and to spec.</p>
+        </article>
+        <article class="x-step reveal">
+          <div class="x-step-no">04</div>
           <h4>Launch</h4>
-          <p>We ship, measure, and pressure-test in market with real budget and real data.</p>
-        </div>
-        <div class="proc-step">
-          <div class="proc-num">5</div>
+          <p>Ship, measure, and pressure-test with real budget and real data.</p>
+        </article>
+        <article class="x-step reveal">
+          <div class="x-step-no">05</div>
           <h4>Scale &amp; Optimise</h4>
-          <p>Double down on winners and systematize them into compounding, durable growth.</p>
-        </div>
-
+          <p>Double down on winners and systematize compounding growth.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 8 — TESTIMONIALS -->
-  <section class="section testimonials">
-    <div class="container">
-      <div class="section-label">Don't Take Our Word For It</div>
-      <h2 class="section-title">Real brands. Real Reviews.<br/>Real trust.</h2>
-      <div class="testimonial-grid">
-
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"Yuvaan didn't just run our ads — they rebuilt our entire funnel. We went from breaking even to a consistent 4x ROAS in under two months."</p>
-          <div class="t-person">
-            <div class="t-avatar">RS</div>
-            <div class="t-info">
-              <span class="t-name">Riya Sharma</span>
-              <span class="t-brand">Founder, SilverRish Jewelry</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"The speed is unreal. They shipped our new store in three days and it converted better than the site we'd spent months on. True execution partners."</p>
-          <div class="t-person">
-            <div class="t-avatar">AK</div>
-            <div class="t-info">
-              <span class="t-name">Arjun Kapoor</span>
-              <span class="t-brand">CEO, Gadget Destiny</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">"Finally an agency that thinks like a founder. Fast replies, real ownership, and numbers that actually move. They feel like part of our team."</p>
-          <div class="t-person">
-            <div class="t-avatar">MP</div>
-            <div class="t-info">
-              <span class="t-name">Meera Patel</span>
-              <span class="t-brand">Founder, Fluffy Munschins</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 9 — ABOUT STRIP -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <div class="section-label">Who We Are</div>
-          <h2>We don't just build websites or run ads. We build <span class="accent-italic">growth ecosystems.</span></h2>
-          <p>Yuvaan Technologies combines marketing, technology, branding, AI automation, and execution into one unified growth system. From your first ad to your 100th order — we build the full stack. Trusted by 100+ DTC brands, hospitality businesses, and SaaS founders.</p>
-          <div class="about-stats">
-            <div class="stat"><span class="stat-num dark">100+</span><span class="stat-label dark">Brands</span></div>
-            <div class="stat-divider dark"></div>
-            <div class="stat"><span class="stat-num dark">8+</span><span class="stat-label dark">Team Members</span></div>
-            <div class="stat-divider dark"></div>
-            <div class="stat"><span class="stat-num dark">4.98/5</span><span class="stat-label dark">Google Rating</span></div>
-          </div>
-          <a href="#contact" class="card-link big">Read Our Story →</a>
-        </div>
-        <div class="about-right">
-          <div class="feature-tag">✅ Founder-led, Fast Support</div>
-          <div class="feature-tag">✅ Strong Build, Repeatable Systems</div>
-          <div class="feature-tag">✅ 100+ Brands Trust Our Process</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 10 — FINAL CTA BANNER -->
+  <!-- ============ FINAL CTA ============ -->
   <section class="cta-banner" id="contact">
     <div class="container cta-inner">
       <h2>Ready to scale your business <span class="accent-italic">online?</span></h2>
       <p>Book a free 30-min strategy call. No pitch. No pressure. Just clarity.</p>
       <div class="cta-buttons">
-        <a href="#contact" class="btn-primary">📞 Book Strategy Call</a>
-        <a href="#case-studies" class="btn-outline">View Our Work</a>
+        <a href="https://yuvaantechnologies.com/request-a-callback/" class="btn-primary magnetic">📞 Book Strategy Call</a>
+        <a href="https://yuvaantechnologies.com/case-study/" class="btn-outline">View Our Work</a>
       </div>
     </div>
+    <div class="hero-glow"></div>
   </section>
 
   <!-- FOOTER -->
@@ -519,47 +403,72 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col footer-brand">
-          <a href="#" class="logo">Yuvaan<span>.</span></a>
+          <a href="#" class="logo logo-img" aria-label="Yuvaan Technologies"><img src="images/logo.png" alt="Yuvaan Technologies" onerror="this.style.display='none';this.parentNode.classList.remove('logo-img');"/><span class="logo-fallback">Yuvaan<span class="logo-dot">.</span></span></a>
           <p>Build Smarter. Scale Faster. We engineer growth ecosystems for ambitious brands.</p>
           <div class="footer-socials">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="LinkedIn">IN</a>
-            <a href="#" aria-label="X">X</a>
-            <a href="#" aria-label="YouTube">YT</a>
+            <a href="https://www.instagram.com/yuvaantech/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.81-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.81-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.81.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63a5.92 5.92 0 0 0-2.13 1.39A5.92 5.92 0 0 0 .63 4.14C.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.06 1.27.27 2.15.56 2.91.31.79.71 1.46 1.39 2.13.67.68 1.34 1.08 2.13 1.39.76.29 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.56a5.92 5.92 0 0 0 2.13-1.39 5.92 5.92 0 0 0 1.39-2.13c.29-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.56-2.91a5.92 5.92 0 0 0-1.39-2.13A5.92 5.92 0 0 0 19.86.63C19.1.34 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></a>
+            <a href="https://www.linkedin.com/company/71483031/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 2.07-2.06 2.06 2.06 0 0 1-2.07 2.06zm1.78 13.02H3.56V9h3.56zM22.22 0H1.77A1.75 1.75 0 0 0 0 1.73v20.54A1.75 1.75 0 0 0 1.77 24h20.45A1.76 1.76 0 0 0 24 22.27V1.73A1.76 1.76 0 0 0 22.22 0z"/></svg></a>
+            <a href="https://www.facebook.com/YuvaanTechnologies/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+            <a href="https://www.youtube.com/@yuvaantechnologies" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.53A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.12 2.12c1.88.53 9.38.53 9.38.53s7.5 0 9.38-.53A3 3 0 0 0 23.5 17.8C24 15.93 24 12 24 12s0-3.93-.5-5.8zM9.6 15.57V8.43L15.82 12 9.6 15.57z"/></svg></a>
           </div>
         </div>
         <div class="footer-col">
           <h5>Services</h5>
-          <a href="#services">Website Development</a>
-          <a href="#services">Performance Marketing</a>
-          <a href="#services">Branding &amp; Creative</a>
-          <a href="#services">SEO &amp; Automation</a>
+          <a href="performance-marketing.html">Performance Marketing</a>
+          <a href="website-development.html">Website Development</a>
+          <a href="ai-automation.html">AI &amp; Automation</a>
+          <a href="video-production-ugc.html">Video Production &amp; UGC</a>
         </div>
         <div class="footer-col">
           <h5>Products</h5>
-          <a href="products.html">SiteSprint</a>
-          <a href="products.html">RTO Flow™</a>
+          <a href="https://yuvaantechnologies.com/storyscale-ai/">StoryScale AI</a>
+          <a href="https://yuvaantechnologies.com/sitesprint/">SiteSprint AI</a>
+          <a href="https://yuvaantechnologies.com/rto-fixer/">RTO Fixer</a>
           <a href="products.html">Dropshipping Program</a>
-          <a href="products.html">StoryScale AI</a>
         </div>
         <div class="footer-col">
           <h5>Company</h5>
-          <a href="#about">About</a>
-          <a href="#case-studies">Case Studies</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
+          <a href="about.html">About</a>
+          <a href="https://yuvaantechnologies.com/case-study/">Case Studies</a>
+          <a href="https://yuvaantechnologies.com/request-a-callback/">Contact</a>
+        </div>
+        <div class="footer-col footer-contact">
+          <h5>Contact</h5>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label">Head Quarter</span>
+            <span class="footer-contact-value">#14, Kamal Baug, Wagholi, Pune, Maharashtra, India — 412207</span>
+          </div>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label">Phone</span>
+            <a class="footer-contact-value" href="tel:+919552548276">+91 95525 48276</a>
+          </div>
+          <div class="footer-contact-block">
+            <span class="footer-contact-label">Email</span>
+            <a class="footer-contact-value" href="mailto:info@yuvaantechnologies.com">info@yuvaantechnologies.com</a>
+          </div>
+          <div class="footer-contact-gst">GST: 27BIIPM2767D1Z5</div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Yuvaan Technologies. All rights reserved.</span>
+        <span>© 2026 Yuvaan Technologies. All rights reserved.</span>
         <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms</a>
+          <a href="https://yuvaantechnologies.com/privacy-policy/">Privacy Policy</a>
+          <a href="https://yuvaantechnologies.com/terms-conditions/">Terms &amp; Conditions</a>
+          <a href="https://yuvaantechnologies.com/refund-policy/">Refund Policy</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- VIDEO LIGHTBOX -->
+  <div class="x-modal" id="videoModal" aria-hidden="true">
+    <div class="x-modal-overlay" data-close></div>
+    <div class="x-modal-dialog" role="dialog" aria-modal="true" aria-label="Yuvaan Technologies video">
+      <button class="x-modal-close" type="button" data-close aria-label="Close video">✕</button>
+      <div class="x-modal-frame" id="videoFrame"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js?v=202606241314"></script>
 </body>
 </html>
